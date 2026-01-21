@@ -1,0 +1,4 @@
+[2026-01-21T16:04:54.065Z] [INFO] Client disconnected - blocking incoming messages and caching for replay
+[2026-01-21T16:04:54.065Z] [WARN] Client disconnected - cloud session will persist until auto-shutdown, reason: Client disconnected
+[2026-01-21T16:04:54.066Z] [INFO] Auto-shutdown timer started due to client disconnection
+[2026-01-21T16:07:54.078Z] [INFO] Shutdown: Initiating graceful shutdown: Dedicated client disconnected
