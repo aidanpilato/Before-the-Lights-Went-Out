@@ -81,6 +81,7 @@ namespace StarterAssets
 
         // player
         private float _speed;
+        private float _maxSpeed;
         private float _animationBlend;
         private float _targetRotation = 90f; // default facing
         private float _rotationVelocity;
@@ -132,6 +133,8 @@ namespace StarterAssets
 
         private void Start()
         {
+            _maxSpeed = SprintSpeed;
+
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
 
             _hasAnimator = TryGetComponent(out _animator);
@@ -234,8 +237,19 @@ namespace StarterAssets
                 _speed = targetSpeed;
             }
 
-            _animationBlend = Mathf.Lerp(_animationBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
-            if (_animationBlend < 0.01f) _animationBlend = 0f;
+            float targetAnimSpeed = targetSpeed * inputMagnitude;
+
+            // normalized speed (0 = idle, 1 = sprint max)
+            float normalizedSpeed = (_speed > 0f) ? Mathf.Clamp01(_speed / _maxSpeed) : 0f;
+
+            // calculate a dynamic scalar so walking hits ~0.5 animation speed
+            float walkScalar = 0.5f / (MoveSpeed / SprintSpeed);
+
+            _animationBlend = Mathf.Lerp(
+                _animationBlend,
+                Mathf.Clamp01(normalizedSpeed * walkScalar), // scale up walking to feel faster
+                Time.deltaTime * SpeedChangeRate
+            );
 
             // 2.5D movement: only use X input
             float moveDirection = _input.move.x;
@@ -271,7 +285,10 @@ namespace StarterAssets
             if (_hasAnimator)
             {
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
-                _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+
+                float motionSpeed = (_input.sprint ? 2f : 1f) * inputMagnitude;
+                _animator.SetFloat(_animIDMotionSpeed, motionSpeed);
+
             }
         }
 
