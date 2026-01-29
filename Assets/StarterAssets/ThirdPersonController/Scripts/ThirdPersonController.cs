@@ -15,17 +15,12 @@ namespace StarterAssets
     public class ThirdPersonController : MonoBehaviour
     {
         [Header("Player")]
-        [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
-
-        [Tooltip("Sprint speed of the character in m/s")]
         public float SprintSpeed = 5.335f;
 
-        [Tooltip("How fast the character turns to face movement direction")]
         [Range(0.0f, 0.3f)]
         public float RotationSmoothTime = 0.12f;
 
-        [Tooltip("Acceleration and deceleration")]
         public float SpeedChangeRate = 10.0f;
 
         public AudioClip LandingAudioClip;
@@ -33,46 +28,29 @@ namespace StarterAssets
         [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
 
         [Space(10)]
-        [Tooltip("The height the player can jump")]
         public float JumpHeight = 1.2f;
-
-        [Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
         public float Gravity = -15.0f;
-
-        [Space(10)]
-        [Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
         public float JumpTimeout = 0.50f;
-
-        [Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")]
         public float FallTimeout = 0.15f;
 
+        [Header("Forgiveness")]
+        [Tooltip("Stick must exceed this value before movement starts")]
+        [Range(0f, 1f)] public float MovementDeadzone = 0.35f;
+
+        [Tooltip("Angle (degrees) treated as perfectly left/right")]
+        [Range(0f, 90f)] public float DirectionForgivenessAngle = 35f;
+
         [Header("Player Grounded")]
-        [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
         public bool Grounded = true;
-
-        [Tooltip("Useful for rough ground")]
         public float GroundedOffset = -0.14f;
-
-        [Tooltip("The radius of the grounded check. Should match the radius of the CharacterController")]
         public float GroundedRadius = 0.28f;
-
-        [Tooltip("What layers the character uses as ground")]
         public LayerMask GroundLayers;
 
         [Header("Cinemachine")]
-        [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
         public GameObject CinemachineCameraTarget;
-
-        [Tooltip("How far in degrees can you move the camera up")]
         public float TopClamp = 70.0f;
-
-        [Tooltip("How far in degrees can you move the camera down")]
         public float BottomClamp = -30.0f;
-
-        [Tooltip("Additional degress to override the camera. Useful for fine tuning camera position when locked")]
         public float CameraAngleOverride = 0.0f;
-
-        [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
 
         // cinemachine
@@ -83,7 +61,7 @@ namespace StarterAssets
         private float _speed;
         private float _maxSpeed;
         private float _animationBlend;
-        private float _targetRotation = 90f; // default facing
+        private float _targetRotation = 90f;
         private float _rotationVelocity;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
@@ -108,7 +86,6 @@ namespace StarterAssets
         private GameObject _mainCamera;
 
         private const float _threshold = 0.01f;
-
         private bool _hasAnimator;
 
         private bool IsCurrentDeviceMouse
@@ -126,9 +103,7 @@ namespace StarterAssets
         private void Awake()
         {
             if (_mainCamera == null)
-            {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-            }
         }
 
         private void Start()
@@ -175,15 +150,11 @@ namespace StarterAssets
 
         private void GroundedCheck()
         {
-            Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset,
-                transform.position.z);
-            Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers,
-                QueryTriggerInteraction.Ignore);
+            Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
+            Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
 
             if (_hasAnimator)
-            {
                 _animator.SetBool(_animIDGrounded, Grounded);
-            }
         }
 
         private void CameraRotation()
@@ -208,26 +179,36 @@ namespace StarterAssets
         private void Move()
         {
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
-            if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+
+            // ---- INPUT FORGIVENESS ----
+            Vector2 moveInput = _input.move;
+            float horizontalInput = moveInput.x;
+            float absInput = Mathf.Abs(horizontalInput);
+
+            float inputMagnitude = absInput >= MovementDeadzone ? absInput : 0f;
+
+            if (inputMagnitude > 0f)
+            {
+                float angle = Vector2.Angle(moveInput, Vector2.right * Mathf.Sign(horizontalInput));
+                if (angle <= DirectionForgivenessAngle)
+                    inputMagnitude = Mathf.Clamp01(inputMagnitude);
+            }
+
+            if (!_input.analogMovement && inputMagnitude > 0f)
+                inputMagnitude = 1f;
+
+            if (inputMagnitude == 0f)
+                targetSpeed = 0f;
 
             float currentHorizontalSpeed = Mathf.Abs(_controller.velocity.x);
             float speedOffset = 0.1f;
-            float rawInput = Mathf.Abs(_input.move.x);
-
-            float inputMagnitude = Mathf.Abs(_input.move.x);
-
-            // keyboard stays binary
-            if (!_input.analogMovement && inputMagnitude > 0f)
-            {
-                inputMagnitude = 1f;
-            }
-
-
 
             if (currentHorizontalSpeed < targetSpeed - speedOffset ||
                 currentHorizontalSpeed > targetSpeed + speedOffset)
             {
-                _speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude,
+                _speed = Mathf.Lerp(
+                    currentHorizontalSpeed,
+                    targetSpeed * inputMagnitude,
                     Time.deltaTime * SpeedChangeRate);
 
                 _speed = Mathf.Round(_speed * 1000f) / 1000f;
@@ -237,30 +218,20 @@ namespace StarterAssets
                 _speed = targetSpeed;
             }
 
-            float targetAnimSpeed = targetSpeed * inputMagnitude;
-
-            // normalized speed (0 = idle, 1 = sprint max)
             float normalizedSpeed = (_speed > 0f) ? Mathf.Clamp01(_speed / _maxSpeed) : 0f;
-
-            // calculate a dynamic scalar so walking hits ~0.5 animation speed
             float walkScalar = 0.5f / (MoveSpeed / SprintSpeed);
 
             _animationBlend = Mathf.Lerp(
                 _animationBlend,
-                Mathf.Clamp01(normalizedSpeed * walkScalar), // scale up walking to feel faster
+                Mathf.Clamp01(normalizedSpeed * walkScalar),
                 Time.deltaTime * SpeedChangeRate
             );
 
-            // 2.5D movement: only use X input
-            float moveDirection = _input.move.x;
-
-            // ===== FIX: input selects target rotation =====
-            if (moveDirection > 0f)
+            if (horizontalInput > 0f)
                 _targetRotation = 90f;
-            else if (moveDirection < 0f)
+            else if (horizontalInput < 0f)
                 _targetRotation = 270f;
 
-            // ===== FIX: always resolve rotation smoothly =====
             float rotation = Mathf.SmoothDampAngle(
                 transform.eulerAngles.y,
                 _targetRotation,
@@ -268,27 +239,17 @@ namespace StarterAssets
                 RotationSmoothTime
             );
 
-            const float snapThreshold = 0.25f;
-            if (Mathf.Abs(Mathf.DeltaAngle(rotation, _targetRotation)) <= snapThreshold)
-            {
-                rotation = _targetRotation;
-                _rotationVelocity = 0f;
-            }
-
             transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
 
             _controller.Move(new Vector3(
-                moveDirection * _speed * Time.deltaTime,
+                Mathf.Sign(horizontalInput) * _speed * Time.deltaTime,
                 _verticalVelocity * Time.deltaTime,
                 0.0f));
 
             if (_hasAnimator)
             {
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
-
-                float motionSpeed = (_input.sprint ? 2f : 1f) * inputMagnitude;
-                _animator.SetFloat(_animIDMotionSpeed, motionSpeed);
-
+                _animator.SetFloat(_animIDMotionSpeed, (_input.sprint ? 2f : 1f) * inputMagnitude);
             }
         }
 
@@ -305,45 +266,32 @@ namespace StarterAssets
                 }
 
                 if (_verticalVelocity < 0.0f)
-                {
                     _verticalVelocity = -2f;
-                }
 
                 if (_input.jump && _jumpTimeoutDelta <= 0.0f)
                 {
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-
                     if (_hasAnimator)
-                    {
                         _animator.SetBool(_animIDJump, true);
-                    }
                 }
 
                 if (_jumpTimeoutDelta >= 0.0f)
-                {
                     _jumpTimeoutDelta -= Time.deltaTime;
-                }
             }
             else
             {
                 _jumpTimeoutDelta = JumpTimeout;
 
                 if (_fallTimeoutDelta >= 0.0f)
-                {
                     _fallTimeoutDelta -= Time.deltaTime;
-                }
                 else if (_hasAnimator)
-                {
                     _animator.SetBool(_animIDFreeFall, true);
-                }
 
                 _input.jump = false;
             }
 
             if (_verticalVelocity < _terminalVelocity)
-            {
                 _verticalVelocity += Gravity * Time.deltaTime;
-            }
         }
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
@@ -353,15 +301,13 @@ namespace StarterAssets
             return Mathf.Clamp(lfAngle, lfMin, lfMax);
         }
 
-    private void OnDrawGizmosSelected()
+        private void OnDrawGizmosSelected()
         {
             Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
             Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
 
-            if (Grounded) Gizmos.color = transparentGreen;
-            else Gizmos.color = transparentRed;
+            Gizmos.color = Grounded ? transparentGreen : transparentRed;
 
-            // when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
             Gizmos.DrawSphere(
                 new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z),
                 GroundedRadius);
@@ -369,13 +315,13 @@ namespace StarterAssets
 
         private void OnFootstep(AnimationEvent animationEvent)
         {
-            if (animationEvent.animatorClipInfo.weight > 0.5f)
+            if (animationEvent.animatorClipInfo.weight > 0.5f && FootstepAudioClips.Length > 0)
             {
-                if (FootstepAudioClips.Length > 0)
-                {
-                    var index = Random.Range(0, FootstepAudioClips.Length);
-                    AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
-                }
+                int index = Random.Range(0, FootstepAudioClips.Length);
+                AudioSource.PlayClipAtPoint(
+                    FootstepAudioClips[index],
+                    transform.TransformPoint(_controller.center),
+                    FootstepAudioVolume);
             }
         }
 
@@ -383,7 +329,10 @@ namespace StarterAssets
         {
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
-                AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
+                AudioSource.PlayClipAtPoint(
+                    LandingAudioClip,
+                    transform.TransformPoint(_controller.center),
+                    FootstepAudioVolume);
             }
         }
     }
