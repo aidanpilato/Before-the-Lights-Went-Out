@@ -53,6 +53,8 @@ namespace StarterAssets
         public float CameraAngleOverride = 0.0f;
         public bool LockCameraPosition = false;
 
+        public bool movementLocked = false; // New variable to control movement locking
+
         // cinemachine
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
@@ -182,6 +184,11 @@ namespace StarterAssets
 
             // ---- INPUT FORGIVENESS ----
             Vector2 moveInput = _input.move;
+            if (movementLocked)
+            {
+                moveInput = Vector2.zero;
+            }
+            
             float horizontalInput = moveInput.x;
             float absInput = Mathf.Abs(horizontalInput);
 
