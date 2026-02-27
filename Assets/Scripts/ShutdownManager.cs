@@ -9,7 +9,7 @@ public class ShutdownManager : MonoBehaviour
     public GameObject memoryRoot;
     public CinemachineVirtualCamera gameplayCam;
     public ThirdPersonController playerMovement; // drag your movement script here
-    public Animator playerAnimator; // optional, for shutdown animation
+    public Animator playerAnimator;
 
     [Header("Shutdown Settings")]
     public float shutdownDuration = 5f;
@@ -80,10 +80,6 @@ public class ShutdownManager : MonoBehaviour
 
         isCharging = true;
         playerMovement.movementLocked = true;
-
-        // Force idle animation
-        //playerAnimator.SetFloat("Speed", 0f);
-        //playerAnimator.SetBool("IsMoving", false);
     }
 
     public void UpdateShutdownProgress(float progress)

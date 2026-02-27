@@ -9,6 +9,8 @@ public class ConsoleInteraction : MonoBehaviour
     [Header("Settings")]
     public float requiredHoldTime = 5f;
 
+    public bool isUsed = false;
+
     private bool playerInRange = false;
     private bool isHolding = false;
     private float holdTimer = 0f;
@@ -32,6 +34,14 @@ public class ConsoleInteraction : MonoBehaviour
 
     void Update()
     {
+        // If already used, do nothing
+        if (isUsed)
+        {
+            return;
+        }
+        
+        // Everything below only runs if console has not been used yet
+
         if (!playerInRange)
             return;
 
@@ -53,6 +63,7 @@ public class ConsoleInteraction : MonoBehaviour
             {
                 isHolding = false;
                 shutdownManager.CompleteShutdown();
+                isUsed = true;
             }
         }
         else
