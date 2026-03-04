@@ -1687,6 +1687,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1936122530}
+  - {fileID: 1448232494}
   m_Father: {fileID: 1129698396}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &525059686
@@ -3301,7 +3302,7 @@ Transform:
   m_GameObject: {fileID: 1129698395}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -51.42, y: -6.59, z: 16.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3515,6 +3516,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1233363842}
+  - component: {fileID: 1233363843}
   m_Layer: 0
   m_Name: Memory Manager
   m_TagString: Untagged
@@ -3537,6 +3539,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1129698396}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1233363843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233363841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d8b59285f0fcf45a94424378d45a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MemoryManager
+  player: {fileID: 905107281}
 --- !u!1 &1248508876
 GameObject:
   m_ObjectHideFlags: 0
@@ -4130,6 +4145,52 @@ Transform:
   - {fileID: 1069199220}
   m_Father: {fileID: 1136052004}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1448232493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1448232494}
+  - component: {fileID: 1448232495}
+  m_Layer: 0
+  m_Name: Clip_02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1448232494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448232493}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 66.26, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 506860715}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1448232495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448232493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c67ab5854fc17b248983e47ec11f8e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MemoryClipTrigger
+  clip: {fileID: 8300000, guid: f7f142280f30a044eb3b893b7560bc93, type: 3}
+  hasPlayed: 0
 --- !u!1 &1454414213
 GameObject:
   m_ObjectHideFlags: 0
@@ -5821,6 +5882,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1936122530}
+  - component: {fileID: 1936122531}
   m_Layer: 0
   m_Name: Clip_01
   m_TagString: Untagged
@@ -5837,12 +5899,26 @@ Transform:
   m_GameObject: {fileID: 1936122529}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 506860715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1936122531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936122529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c67ab5854fc17b248983e47ec11f8e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MemoryClipTrigger
+  clip: {fileID: 8300000, guid: ca6d6a19a69fd5048a8e8bb8fbba61fe, type: 3}
+  hasPlayed: 0
 --- !u!1 &1961971020
 GameObject:
   m_ObjectHideFlags: 3
