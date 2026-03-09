@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 168}
   m_MaxSize: {x: 24288, y: 24288}
   vertical: 0
-  controlID: 113
+  controlID: 3452
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 168}
   m_MaxSize: {x: 8096, y: 24288}
   vertical: 1
-  controlID: 51
+  controlID: 3453
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -219,7 +219,7 @@ MonoBehaviour:
     m_SaveData:
     - dockPosition: 0
       containerId: overlay-toolbar__top
-      displayed: 1
+      displayed: 0
       id: Brush Attributes
       index: 0
       contents: '{"m_Layout":4,"m_Collapsed":false,"m_Folded":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":24.0,"y":0.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
@@ -303,7 +303,7 @@ MonoBehaviour:
       sizeOverridden: 0
     - dockPosition: 0
       containerId: overlay-toolbar__left
-      displayed: 1
+      displayed: 0
       id: Terrain Tools
       index: 0
       contents: '{"m_Layout":4,"m_Collapsed":false,"m_Folded":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":24.0,"y":0.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
@@ -317,12 +317,12 @@ MonoBehaviour:
       sizeOverridden: 0
     - dockPosition: 0
       containerId: overlay-toolbar__left
-      displayed: 1
+      displayed: 0
       id: Brush Masks
       index: 1
       contents: '{"m_Layout":4,"m_Collapsed":false,"m_Folded":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":24.0,"y":0.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
-      collapsed: 1
+      collapsed: 0
       snapOffset: {x: 24, y: 0}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
@@ -624,9 +624,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -2.1273127, y: 2.0206814, z: -4.434109}
+    m_Target: {x: -0.7970159, y: 5.438716, z: -10.150974}
     speed: 2
-    m_Value: {x: -2.1273127, y: 2.0206814, z: -4.434109}
+    m_Value: {x: -0.7970159, y: 5.438716, z: -10.150974}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -672,13 +672,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.31697062, y: -0.001458557, z: 0.00045449668, w: 0.948539}
+    m_Target: {x: 0.16650961, y: -0.09312731, z: 0.015584886, w: 0.98165387}
     speed: 2
-    m_Value: {x: 0.31693912, y: -0.0014584119, z: 0.0004544515, w: 0.9484447}
+    m_Value: {x: 0.16648586, y: -0.093114026, z: 0.015582662, w: 0.9815138}
   m_Size:
-    m_Target: 2.3546333
+    m_Target: 0.8966507
     speed: 2
-    m_Value: 2.3546333
+    m_Value: 0.8966507
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -900,7 +900,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 112}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 114
+  controlID: 3597
   draggingID: 0
 --- !u!114 &11
 MonoBehaviour:
@@ -926,7 +926,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 56}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 108
+  controlID: 3598
   draggingID: 0
 --- !u!114 &12
 MonoBehaviour:
@@ -1000,6 +1000,12 @@ MonoBehaviour:
         m_Data: 0
       m_ExpandedIDs:
       - m_Data: -1320
+      - m_Data: 47240
+      - m_Data: 47248
+      - m_Data: 47400
+      - m_Data: 47502
+      - m_Data: 47630
+      - m_Data: 47706
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1093,11 +1099,11 @@ MonoBehaviour:
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
-    m_CachedPref: -322
+    m_CachedPref: -403
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -4844
-  m_LastVerticalScrollValue: 480
+  m_LastInspectedObjectInstanceID: 47630
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -1216,7 +1222,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 3
     m_Folders:
-    - Assets/MicroVerse-Extras/Terrain Textures/Textures/Grass 04
+    - Assets/Scripts
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1226,18 +1232,18 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/MicroVerse-Extras/Terrain Textures/Textures/Grass 04
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\aidan\Unity Projects\Going Dark
   m_LockTracker:
     m_IsLocked: 0
   m_LastLocalAssetsSearchArea: 3
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 168}
+    scrollPos: {x: 0, y: 1000}
     m_SelectedIDs:
-    - m_Data: 50024
+    - m_Data: 48774
     m_LastClickedID:
-      m_Data: 50024
+      m_Data: 48774
     m_ExpandedIDs:
     - m_Data: 0
     - m_Data: 48358
@@ -1273,6 +1279,7 @@ MonoBehaviour:
     - m_Data: 48418
     - m_Data: 48420
     - m_Data: 48422
+    - m_Data: 48764
     - m_Data: 50096
     - m_Data: 1000000000
     m_RenameOverlay:
@@ -1340,6 +1347,9 @@ MonoBehaviour:
     - m_Data: 48418
     - m_Data: 48420
     - m_Data: 48422
+    - m_Data: 48764
+    - m_Data: 50096
+    - m_Data: 1000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1367,8 +1377,8 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
     m_SelectedInstanceIDs:
-    - m_Data: -4844
-    m_LastClickedInstanceID: -4844
+    - m_Data: 47630
+    m_LastClickedInstanceID: 47630
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs:
     - m_Data: 54292
