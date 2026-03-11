@@ -10,6 +10,8 @@ public class ShutdownManager : MonoBehaviour
     public CinemachineVirtualCamera gameplayCam;
     public ThirdPersonController playerMovement; // drag your movement script here
     public Animator playerAnimator;
+    public GameObject[] consoleLights;
+    public Material consoleLightNoPowerMaterial;
 
     [Header("Shutdown Settings")]
     public float shutdownDuration = 5f;
@@ -140,6 +142,16 @@ public class ShutdownManager : MonoBehaviour
         // HARD SNAP CAMERA RESET
         gameplayCam.m_Lens.FieldOfView = originalFOV;
         gameplayCam.m_Lens.Dutch = 0f;
+
+        // Change material of console lights
+        for (int i = 0; i < consoleLights.Length; i++)
+        {
+            MeshRenderer rend = consoleLights[i].GetComponent<MeshRenderer>();
+            if (rend != null)
+            {
+                rend.material = consoleLightNoPowerMaterial; // assign this in inspector
+            }
+        }
 
         // Kill memory world
         memoryRoot.SetActive(false);
