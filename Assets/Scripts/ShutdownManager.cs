@@ -7,6 +7,7 @@ public class ShutdownManager : MonoBehaviour
 {
     [Header("References")]
     public GameObject memoryRoot;
+    public GameObject industrialRoot;
     public CinemachineVirtualCamera gameplayCam;
     public ThirdPersonController playerMovement; // drag your movement script here
     public Animator playerAnimator;
@@ -139,6 +140,12 @@ public class ShutdownManager : MonoBehaviour
     {
         StopAllCoroutines();
 
+        // Activate industrial world
+        industrialRoot.SetActive(true);
+
+        // Kill memory world
+        memoryRoot.SetActive(false);
+
         // HARD SNAP CAMERA RESET
         gameplayCam.m_Lens.FieldOfView = originalFOV;
         gameplayCam.m_Lens.Dutch = 0f;
@@ -152,9 +159,6 @@ public class ShutdownManager : MonoBehaviour
                 rend.material = consoleLightNoPowerMaterial; // assign this in inspector
             }
         }
-
-        // Kill memory world
-        memoryRoot.SetActive(false);
 
         // Restore player control
         playerMovement.movementLocked = false;
