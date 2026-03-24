@@ -2,12 +2,15 @@ using UnityEngine;
 using Cinemachine;
 using System.Collections;
 using StarterAssets;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class ShutdownManager : MonoBehaviour
 {
     [Header("References")]
     public GameObject memoryRoot;
     public GameObject industrialRoot;
+    public Volume postProcess;
     public CinemachineVirtualCamera gameplayCam;
     public ThirdPersonController playerMovement; // drag your movement script here
     public Animator playerAnimator;
@@ -23,10 +26,13 @@ public class ShutdownManager : MonoBehaviour
     private float currentProgress = 0f;
     private bool shuttingDown = false;
     private bool isCharging = false;
+    private LensDistortion lensDistortion;
 
     void Start()
     {
         originalFOV = gameplayCam.m_Lens.FieldOfView;
+        postProcess.profile.TryGet(out LensDistortion lensDistortion);
+        this.lensDistortion = lensDistortion;
     }
 
     public void BeginShutdown()
@@ -56,6 +62,8 @@ public class ShutdownManager : MonoBehaviour
 
             gameplayCam.m_Lens.Dutch =
                 Mathf.Lerp(0f, dutchAmount, curve);
+            
+            lensDistortion.intensity.value = Mathf.Lerp(0f, -1f, curve);
 
             yield return null;
         }
@@ -70,6 +78,7 @@ public class ShutdownManager : MonoBehaviour
         // Instant reset
         gameplayCam.m_Lens.FieldOfView = originalFOV;
         gameplayCam.m_Lens.Dutch = 0f;
+        lensDistortion.intensity.value = 0f;
 
         // Kill memory world instantly
         memoryRoot.SetActive(false);
@@ -96,6 +105,8 @@ public class ShutdownManager : MonoBehaviour
 
         gameplayCam.m_Lens.Dutch =
             Mathf.Lerp(0f, dutchAmount, curve);
+        
+        lensDistortion.intensity.value = Mathf.Lerp(0f, -1f, curve);
     }
 
     public void CancelShutdownCharge()
@@ -112,6 +123,7 @@ public class ShutdownManager : MonoBehaviour
     {
         float startFOV = gameplayCam.m_Lens.FieldOfView;
         float startDutch = gameplayCam.m_Lens.Dutch;
+        float startLensDistortion = lensDistortion.intensity.value;
 
         float time = 0f;
         float duration = 1f;
@@ -126,12 +138,16 @@ public class ShutdownManager : MonoBehaviour
 
             gameplayCam.m_Lens.Dutch =
                 Mathf.Lerp(startDutch, 0f, t);
+            
+            lensDistortion.intensity.value = 
+                Mathf.Lerp(startLensDistortion, 0f, t);
 
             yield return null;
         }
 
         gameplayCam.m_Lens.FieldOfView = originalFOV;
         gameplayCam.m_Lens.Dutch = 0f;
+        lensDistortion.intensity.value = 0f;
 
         playerMovement.movementLocked = false;
     }
@@ -149,6 +165,7 @@ public class ShutdownManager : MonoBehaviour
         // HARD SNAP CAMERA RESET
         gameplayCam.m_Lens.FieldOfView = originalFOV;
         gameplayCam.m_Lens.Dutch = 0f;
+        lensDistortion.intensity.value = 0f;
 
         // Change material of console lights
         for (int i = 0; i < consoleLights.Length; i++)
