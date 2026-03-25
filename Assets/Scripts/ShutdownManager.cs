@@ -27,12 +27,15 @@ public class ShutdownManager : MonoBehaviour
     private bool shuttingDown = false;
     private bool isCharging = false;
     private LensDistortion lensDistortion;
+    private ColorAdjustments colorAdjustments;
 
     void Start()
     {
         originalFOV = gameplayCam.m_Lens.FieldOfView;
         postProcess.profile.TryGet(out LensDistortion lensDistortion);
+        postProcess.profile.TryGet(out ColorAdjustments colorAdjustments);
         this.lensDistortion = lensDistortion;
+        this.colorAdjustments = colorAdjustments;
     }
 
     public void BeginShutdown()
@@ -165,6 +168,7 @@ public class ShutdownManager : MonoBehaviour
         // HARD SNAP CAMERA RESET
         gameplayCam.m_Lens.FieldOfView = originalFOV;
         gameplayCam.m_Lens.Dutch = 0f;
+        colorAdjustments.postExposure.value = -1.72f;
         lensDistortion.intensity.value = 0f;
 
         // Change material of console lights
