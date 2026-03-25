@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 3da83c6cea5a747459fe196a8f3ea66e, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: d62606a3608a3e546a186d31c7a5b616, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 416cb0e08bcd9c341b616a63a3a4eef3, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -3042,6 +3042,7 @@ MonoBehaviour:
   - {fileID: 1344878605}
   - {fileID: 1693234386}
   consoleLightNoPowerMaterial: {fileID: 2100000, guid: 9456a7f8681accc4287a0dafa9051e4e, type: 2}
+  industrialLighting: {fileID: 112000000, guid: 3da83c6cea5a747459fe196a8f3ea66e, type: 2}
   shutdownDuration: 5
   fovReduction: 12
   dutchAmount: 5
@@ -3484,7 +3485,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.06104851, y: 0, z: 0, w: 0.99813485}
-  m_LocalPosition: {x: 378.16205, y: 2.5713463, z: -4.905288}
+  m_LocalPosition: {x: -0.51797485, y: 2.5713463, z: -4.905288}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4503,7 +4504,7 @@ Transform:
   m_GameObject: {fileID: 390605305}
   serializedVersion: 2
   m_LocalRotation: {x: 0.06104851, y: 0, z: 0, w: 0.99813485}
-  m_LocalPosition: {x: 378.16205, y: 2.5713463, z: -4.905288}
+  m_LocalPosition: {x: -0.51797485, y: 2.5713463, z: -4.905288}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7392,7 +7393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &633300866
 Transform:
   m_ObjectHideFlags: 0
@@ -8186,7 +8187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachineTrackedDolly
   m_Path: {fileID: 881066788}
-  m_PathPosition: 1
+  m_PathPosition: 0
   m_PositionUnits: 2
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 0.4
@@ -8250,7 +8251,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 377.97
+      value: -2.04
       objectReference: {fileID: 0}
     - target: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15773,8 +15774,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409403788}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.04821329, y: 0.6584742, z: -0.042337332, w: 0.7498632}
-  m_LocalPosition: {x: 49.783447, y: 2.5, z: -1.2817638}
+  m_LocalRotation: {x: 0.055299643, y: -0.5061123, z: 0.032541055, w: 0.8600776}
+  m_LocalPosition: {x: -9.468964, y: 2.5, z: -1.2817595}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17053,7 +17054,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1493769998
 Transform:
   m_ObjectHideFlags: 0

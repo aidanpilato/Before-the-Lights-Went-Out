@@ -4,6 +4,7 @@ using System.Collections;
 using StarterAssets;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEditor;
 
 public class ShutdownManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class ShutdownManager : MonoBehaviour
     public Animator playerAnimator;
     public GameObject[] consoleLights;
     public Material consoleLightNoPowerMaterial;
+    public LightingDataAsset industrialLighting;
 
     [Header("Shutdown Settings")]
     public float shutdownDuration = 5f;
@@ -168,9 +170,11 @@ public class ShutdownManager : MonoBehaviour
         // HARD SNAP CAMERA RESET
         gameplayCam.m_Lens.FieldOfView = originalFOV;
         gameplayCam.m_Lens.Dutch = 0f;
-        colorAdjustments.postExposure.value = -1.72f;
         lensDistortion.intensity.value = 0f;
 
+        // Adjust post-processing for industrial look
+        colorAdjustments.postExposure.value = -1.72f;
+        
         // Change material of console lights
         for (int i = 0; i < consoleLights.Length; i++)
         {
@@ -180,6 +184,11 @@ public class ShutdownManager : MonoBehaviour
                 rend.material = consoleLightNoPowerMaterial; // assign this in inspector
             }
         }
+
+        // Update lighting to industrial preset
+        Lightmapping.lightingDataAsset = industrialLighting;
+        DynamicGI.UpdateEnvironment();
+        Debug.Log("Lighting data asset switched!");
 
         // Restore player control
         playerMovement.movementLocked = false;

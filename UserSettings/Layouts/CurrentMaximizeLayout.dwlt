@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 168}
   m_MaxSize: {x: 24288, y: 24288}
   vertical: 0
-  controlID: 64431
+  controlID: 69791
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 168}
   m_MaxSize: {x: 8096, y: 24288}
   vertical: 1
-  controlID: 64432
+  controlID: 69700
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -624,9 +624,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 500.3948, y: -4.593932, z: 34.706177}
+    m_Target: {x: 195.1103, y: 2.1495051, z: 50.563114}
     speed: 2
-    m_Value: {x: 500.3948, y: -4.593932, z: 34.706177}
+    m_Value: {x: 195.1103, y: 2.1495051, z: 50.563114}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -672,9 +672,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.14936224, y: 0.03412169, z: -0.0050292127, w: 0.9882364}
+    m_Target: {x: 0.050924316, y: -0.04492917, z: 0.002417981, w: 0.9977453}
     speed: 2
-    m_Value: {x: 0.14935403, y: 0.034119815, z: -0.0050289365, w: 0.9881821}
+    m_Value: {x: 0.050921433, y: -0.044926625, z: 0.002417844, w: 0.9976888}
   m_Size:
     m_Target: 25.516071
     speed: 2
@@ -934,7 +934,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 112}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 64489
+  controlID: 69792
   draggingID: 0
 --- !u!114 &11
 MonoBehaviour:
@@ -960,7 +960,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 56}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 64328
+  controlID: 69793
   draggingID: 0
 --- !u!114 &12
 MonoBehaviour:
@@ -1038,7 +1038,6 @@ MonoBehaviour:
       - m_Data: -171844
       - m_Data: -1320
       - m_Data: 47602
-      - m_Data: 47874
       - m_Data: 48654
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -1136,7 +1135,7 @@ MonoBehaviour:
     m_CachedPref: -325
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -326804
+  m_LastInspectedObjectInstanceID: -1
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
@@ -1256,7 +1255,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scenes/SampleScene
+    - Assets/Lighting Settings
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1266,7 +1265,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes/SampleScene
+  - Assets/Lighting Settings
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\aidan\Unity Projects\Going Dark
   m_LockTracker:
@@ -1275,9 +1274,9 @@ MonoBehaviour:
   m_FolderTreeState:
     scrollPos: {x: 0, y: 238}
     m_SelectedIDs:
-    - m_Data: 56296
+    - m_Data: 49916
     m_LastClickedID:
-      m_Data: 56296
+      m_Data: 49916
     m_ExpandedIDs:
     - m_Data: 0
     - m_Data: 49464
@@ -1418,9 +1417,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs:
-    - m_Data: -326804
-    m_LastClickedInstanceID: -326804
+    m_SelectedInstanceIDs: []
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs:
     - m_Data: 54292
