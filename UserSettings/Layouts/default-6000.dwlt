@@ -1168,9 +1168,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 370.29745, y: 5.8275685, z: -22.372608}
+    m_Target: {x: 44.967827, y: 34.170742, z: -17.753544}
     speed: 2
-    m_Value: {x: 370.29745, y: 5.8275685, z: -22.372608}
+    m_Value: {x: 44.967827, y: 34.170742, z: -17.753544}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1216,13 +1216,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.080557555, y: -0.37184927, z: 0.0325827, w: 0.9242852}
+    m_Target: {x: -0.23023617, y: 0.3268424, z: -0.083856985, w: -0.91296107}
     speed: 2
-    m_Value: {x: -0.08055756, y: 0.3718493, z: -0.0325827, w: -0.92428523}
+    m_Value: {x: -0.23023619, y: 0.3268424, z: -0.08385699, w: -0.91296107}
   m_Size:
-    m_Target: 1.7637166
+    m_Target: 0.8660254
     speed: 2
-    m_Value: 1.7637166
+    m_Value: 0.8660254
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1639,15 +1639,6 @@ MonoBehaviour:
       m_Data: 50960
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 50464
-    - m_Data: 50466
-    - m_Data: 50468
-    - m_Data: 50470
-    - m_Data: 50472
-    - m_Data: 50474
-    - m_Data: 50476
-    - m_Data: 50478
-    - m_Data: 50480
     - m_Data: 50482
     - m_Data: 50484
     - m_Data: 50486
@@ -1678,6 +1669,13 @@ MonoBehaviour:
     - m_Data: 50536
     - m_Data: 50538
     - m_Data: 50540
+    - m_Data: 50542
+    - m_Data: 50544
+    - m_Data: 50546
+    - m_Data: 50548
+    - m_Data: 50550
+    - m_Data: 50552
+    - m_Data: 50554
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1710,15 +1708,6 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 50464
-    - m_Data: 50466
-    - m_Data: 50468
-    - m_Data: 50470
-    - m_Data: 50472
-    - m_Data: 50474
-    - m_Data: 50476
-    - m_Data: 50478
-    - m_Data: 50480
     - m_Data: 50482
     - m_Data: 50484
     - m_Data: 50486
@@ -1749,6 +1738,13 @@ MonoBehaviour:
     - m_Data: 50536
     - m_Data: 50538
     - m_Data: 50540
+    - m_Data: 50542
+    - m_Data: 50544
+    - m_Data: 50546
+    - m_Data: 50548
+    - m_Data: 50550
+    - m_Data: 50552
+    - m_Data: 50554
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
