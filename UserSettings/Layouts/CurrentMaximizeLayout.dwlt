@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 168}
   m_MaxSize: {x: 24288, y: 24288}
   vertical: 0
-  controlID: 6164
+  controlID: 6419
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 168}
   m_MaxSize: {x: 8096, y: 24288}
   vertical: 1
-  controlID: 6165
+  controlID: 6436
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -624,9 +624,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -7.2442737, y: 13.789251, z: 7.210472}
+    m_Target: {x: 42.216034, y: -7.2003326, z: 52.7549}
     speed: 2
-    m_Value: {x: -7.2442737, y: 13.789251, z: 7.210472}
+    m_Value: {x: 42.216034, y: -7.2003326, z: 52.7549}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -672,13 +672,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.098466404, y: 0.09245221, z: -0.008735372, w: 0.99091005}
+    m_Target: {x: -0.24686147, y: 0.2429723, z: -0.06465122, w: -0.9360131}
     speed: 2
-    m_Value: {x: 0.098455474, y: 0.09244195, z: -0.008734402, w: 0.9908001}
+    m_Value: {x: -0.24682736, y: 0.24293873, z: -0.06464229, w: -0.9358838}
   m_Size:
-    m_Target: 10
+    m_Target: 18.373037
     speed: 2
-    m_Value: 10
+    m_Value: 18.373037
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -934,7 +934,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 112}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 6081
+  controlID: 6420
   draggingID: 0
 --- !u!114 &11
 MonoBehaviour:
@@ -960,7 +960,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 56}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 6082
+  controlID: 6421
   draggingID: 0
 --- !u!114 &12
 MonoBehaviour:
@@ -1033,6 +1033,10 @@ MonoBehaviour:
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
+      - m_Data: -102964
+      - m_Data: -97544
+      - m_Data: -92706
+      - m_Data: -91070
       - m_Data: -87636
       - m_Data: -81754
       - m_Data: -74942
@@ -1047,6 +1051,22 @@ MonoBehaviour:
       - m_Data: 75002
       - m_Data: 76178
       - m_Data: 76474
+      - m_Data: 81728
+      - m_Data: 82904
+      - m_Data: 83200
+      - m_Data: 86536
+      - m_Data: 87712
+      - m_Data: 88014
+      - m_Data: 88450
+      - m_Data: 89626
+      - m_Data: 89922
+      - m_Data: 90164
+      - m_Data: 92318
+      - m_Data: 93494
+      - m_Data: 93796
+      - m_Data: 94336
+      - m_Data: 95512
+      - m_Data: 95808
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1143,7 +1163,7 @@ MonoBehaviour:
     m_CachedPref: -319
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 50486
+  m_LastInspectedObjectInstanceID: -1
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
@@ -1207,8 +1227,8 @@ MonoBehaviour:
     y: 481
     width: 606
     height: 452
-  m_MinSize: {x: 230, y: 250}
-  m_MaxSize: {x: 10000, y: 10000}
+  m_MinSize: {x: 231, y: 276}
+  m_MaxSize: {x: 10001, y: 10026}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -1263,7 +1283,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scenes
+    - Assets/Polytope Studio/Lowpoly_Environments/Sources/Materials
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1273,18 +1293,18 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Polytope Studio/Lowpoly_Environments/Sources/Materials
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\aidan\Unity Projects\Going Dark
   m_LockTracker:
     m_IsLocked: 0
   m_LastLocalAssetsSearchArea: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
+    scrollPos: {x: 0, y: 382}
     m_SelectedIDs:
-    - m_Data: 50960
+    - m_Data: 59400
     m_LastClickedID:
-      m_Data: 50960
+      m_Data: 59400
     m_ExpandedIDs:
     - m_Data: 0
     - m_Data: 50498
@@ -1325,7 +1345,9 @@ MonoBehaviour:
     - m_Data: 50568
     - m_Data: 50570
     - m_Data: 50942
+    - m_Data: 50956
     - m_Data: 54986
+    - m_Data: 59386
     - m_Data: 1000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1425,9 +1447,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs:
-    - m_Data: 50486
-    m_LastClickedInstanceID: 50486
+    m_SelectedInstanceIDs: []
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs:
     - m_Data: 54292
