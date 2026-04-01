@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 7249464786583684154}
   - component: {fileID: 5744486798019798282}
   m_Layer: 0
-  m_Name: PT_Grass_02
+  m_Name: PT_Grass_02_Ch2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -331,7 +331,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 09473d06882d1414b84b1fdb7a095516, type: 2}
+  - {fileID: 2100000, guid: 8471ba6d87c500f42865fc6b09cbf3d9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
