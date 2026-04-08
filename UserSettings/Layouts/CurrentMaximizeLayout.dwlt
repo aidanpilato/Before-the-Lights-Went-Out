@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 168}
   m_MaxSize: {x: 24288, y: 24288}
   vertical: 0
-  controlID: 1218
+  controlID: 10822
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 168}
   m_MaxSize: {x: 8096, y: 24288}
   vertical: 1
-  controlID: 1423
+  controlID: 10823
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -624,9 +624,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 377.02298, y: -21.313639, z: 216.37872}
+    m_Target: {x: 280.17587, y: -29.211746, z: 212.146}
     speed: 2
-    m_Value: {x: 377.02298, y: -21.313639, z: 216.37872}
+    m_Value: {x: 280.17587, y: -29.211746, z: 212.146}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -672,9 +672,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.053379476, y: -0.0014985837, z: 0.0002122893, w: 0.9986814}
+    m_Target: {x: -0.088948034, y: -0.0919452, z: 0.0079198545, w: -0.99196106}
     speed: 2
-    m_Value: {x: 0.053373706, y: -0.0014984217, z: 0.00021226636, w: 0.9985735}
+    m_Value: {x: -0.08892958, y: -0.09192612, z: 0.007918211, w: -0.99175525}
   m_Size:
     m_Target: 112.915726
     speed: 2
@@ -934,7 +934,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 112}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 1219
+  controlID: 10980
   draggingID: 0
 --- !u!114 &11
 MonoBehaviour:
@@ -960,7 +960,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 56}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 1220
+  controlID: 10849
   draggingID: 0
 --- !u!114 &12
 MonoBehaviour:
@@ -1033,21 +1033,13 @@ MonoBehaviour:
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
-      - m_Data: -73926
-      - m_Data: -72148
-      - m_Data: -70722
-      - m_Data: -24448
-      - m_Data: -15436
+      - m_Data: -65948
+      - m_Data: -65944
       - m_Data: -1320
-      - m_Data: 53566
-      - m_Data: 54892
-      - m_Data: 55216
-      - m_Data: 61092
-      - m_Data: 62418
-      - m_Data: 62742
-      - m_Data: 72496
-      - m_Data: 73474
-      - m_Data: 74146
+      - m_Data: 47696
+      - m_Data: 48656
+      - m_Data: 49346
+      - m_Data: 49578
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1264,7 +1256,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 3
     m_Folders:
-    - Assets/Forst/Conifers [BOTD]/Render Pipeline Support/URP/Sources/Materials
+    - Assets/Industrial_Zone_Modular_Pack/Prefabs/Industrial_Zone_Hangar_Rounded
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1274,62 +1266,59 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Forst/Conifers [BOTD]/Render Pipeline Support/URP/Sources/Materials
+  - Assets/Industrial_Zone_Modular_Pack/Prefabs/Industrial_Zone_Hangar_Rounded
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\aidan\Unity Projects\Going Dark
   m_LockTracker:
     m_IsLocked: 0
   m_LastLocalAssetsSearchArea: 3
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 247}
+    scrollPos: {x: 0, y: 142}
     m_SelectedIDs:
-    - m_Data: 76618
+    - m_Data: 51270
     m_LastClickedID:
-      m_Data: 76618
+      m_Data: 51270
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 50506
-    - m_Data: 50508
-    - m_Data: 50510
-    - m_Data: 50512
-    - m_Data: 50514
-    - m_Data: 50516
-    - m_Data: 50518
-    - m_Data: 50520
-    - m_Data: 50522
-    - m_Data: 50524
-    - m_Data: 50526
-    - m_Data: 50528
-    - m_Data: 50530
-    - m_Data: 50532
-    - m_Data: 50534
-    - m_Data: 50536
-    - m_Data: 50538
-    - m_Data: 50540
-    - m_Data: 50542
-    - m_Data: 50544
-    - m_Data: 50546
-    - m_Data: 50548
-    - m_Data: 50550
-    - m_Data: 50552
-    - m_Data: 50554
-    - m_Data: 50556
-    - m_Data: 50558
-    - m_Data: 50560
-    - m_Data: 50562
-    - m_Data: 50564
-    - m_Data: 50566
-    - m_Data: 50568
-    - m_Data: 50570
-    - m_Data: 50572
-    - m_Data: 50574
-    - m_Data: 50576
-    - m_Data: 50578
-    - m_Data: 50956
-    - m_Data: 50958
-    - m_Data: 50970
-    - m_Data: 50974
-    - m_Data: 63086
+    - m_Data: 50708
+    - m_Data: 50710
+    - m_Data: 50712
+    - m_Data: 50714
+    - m_Data: 50716
+    - m_Data: 50718
+    - m_Data: 50720
+    - m_Data: 50722
+    - m_Data: 50724
+    - m_Data: 50726
+    - m_Data: 50728
+    - m_Data: 50730
+    - m_Data: 50732
+    - m_Data: 50734
+    - m_Data: 50736
+    - m_Data: 50738
+    - m_Data: 50740
+    - m_Data: 50742
+    - m_Data: 50744
+    - m_Data: 50746
+    - m_Data: 50748
+    - m_Data: 50750
+    - m_Data: 50752
+    - m_Data: 50754
+    - m_Data: 50756
+    - m_Data: 50758
+    - m_Data: 50760
+    - m_Data: 50762
+    - m_Data: 50764
+    - m_Data: 50766
+    - m_Data: 50768
+    - m_Data: 50770
+    - m_Data: 50772
+    - m_Data: 50774
+    - m_Data: 50776
+    - m_Data: 50778
+    - m_Data: 50780
+    - m_Data: 51162
+    - m_Data: 51252
     - m_Data: 1000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1363,43 +1352,45 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 50506
-    - m_Data: 50508
-    - m_Data: 50510
-    - m_Data: 50512
-    - m_Data: 50514
-    - m_Data: 50516
-    - m_Data: 50518
-    - m_Data: 50520
-    - m_Data: 50522
-    - m_Data: 50524
-    - m_Data: 50526
-    - m_Data: 50528
-    - m_Data: 50530
-    - m_Data: 50532
-    - m_Data: 50534
-    - m_Data: 50536
-    - m_Data: 50538
-    - m_Data: 50540
-    - m_Data: 50542
-    - m_Data: 50544
-    - m_Data: 50546
-    - m_Data: 50548
-    - m_Data: 50550
-    - m_Data: 50552
-    - m_Data: 50554
-    - m_Data: 50556
-    - m_Data: 50558
-    - m_Data: 50560
-    - m_Data: 50562
-    - m_Data: 50564
-    - m_Data: 50566
-    - m_Data: 50568
-    - m_Data: 50570
-    - m_Data: 50572
-    - m_Data: 50574
-    - m_Data: 50576
-    - m_Data: 50578
+    - m_Data: 50708
+    - m_Data: 50710
+    - m_Data: 50712
+    - m_Data: 50714
+    - m_Data: 50716
+    - m_Data: 50718
+    - m_Data: 50720
+    - m_Data: 50722
+    - m_Data: 50724
+    - m_Data: 50726
+    - m_Data: 50728
+    - m_Data: 50730
+    - m_Data: 50732
+    - m_Data: 50734
+    - m_Data: 50736
+    - m_Data: 50738
+    - m_Data: 50740
+    - m_Data: 50742
+    - m_Data: 50744
+    - m_Data: 50746
+    - m_Data: 50748
+    - m_Data: 50750
+    - m_Data: 50752
+    - m_Data: 50754
+    - m_Data: 50756
+    - m_Data: 50758
+    - m_Data: 50760
+    - m_Data: 50762
+    - m_Data: 50764
+    - m_Data: 50766
+    - m_Data: 50768
+    - m_Data: 50770
+    - m_Data: 50772
+    - m_Data: 50774
+    - m_Data: 50776
+    - m_Data: 50778
+    - m_Data: 50780
+    - m_Data: 51162
+    - m_Data: 51252
     - m_Data: 1000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
