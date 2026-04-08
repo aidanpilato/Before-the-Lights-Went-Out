@@ -190,6 +190,12 @@ public class ShutdownManager : MonoBehaviour
         DynamicGI.UpdateEnvironment();
         Debug.Log("Lighting data asset switched!");
 
+        Ch3LightingManager ch3Lighting = GetComponent<Ch3LightingManager>();
+        if (ch3Lighting != null)
+        {
+            ch3Lighting.ApplyIndustrialLighting();
+        }
+
         // Restore player control
         playerMovement.movementLocked = false;
 
