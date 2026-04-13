@@ -17,7 +17,7 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
     public Animator playerAnimator;
     public GameObject[] consoleLights;
     public Material consoleLightNoPowerMaterial;
-    public LightingDataAsset industrialLighting;
+    //public LightingDataAsset industrialLighting;
 
     [Header("Shutdown Settings")]
     public float shutdownDuration = 5f;
@@ -186,7 +186,7 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
         }
 
         // Update lighting to industrial preset
-        Lightmapping.lightingDataAsset = industrialLighting;
+        //Lightmapping.lightingDataAsset = industrialLighting;
         DynamicGI.UpdateEnvironment();
         Debug.Log("Lighting data asset switched!");
 
