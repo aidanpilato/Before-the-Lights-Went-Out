@@ -15,11 +15,12 @@ public class ConsoleInteraction : MonoBehaviour
     private bool isHolding = false;
     private float holdTimer = 0f;
 
-    private ShutdownManager shutdownManager;
+    [SerializeField] private MonoBehaviour shutdownHandlerObject;
+    private IShutdownHandler shutdownHandler;
 
     void Awake()
     {
-        shutdownManager = FindAnyObjectByType<ShutdownManager>();
+        shutdownHandler = shutdownHandlerObject as IShutdownHandler;
     }
 
     void OnEnable()
@@ -51,18 +52,18 @@ public class ConsoleInteraction : MonoBehaviour
             {
                 isHolding = true;
                 holdTimer = 0f;
-                shutdownManager.BeginShutdownCharge();
+                shutdownHandler.BeginShutdownCharge();
             }
 
             holdTimer += Time.deltaTime;
 
             float progress = holdTimer / requiredHoldTime;
-            shutdownManager.UpdateShutdownProgress(progress);
+            shutdownHandler.UpdateShutdownProgress(progress);
 
             if (holdTimer >= requiredHoldTime)
             {
                 isHolding = false;
-                shutdownManager.CompleteShutdown();
+                shutdownHandler.CompleteShutdown();
                 isUsed = true;
             }
         }
@@ -72,31 +73,10 @@ public class ConsoleInteraction : MonoBehaviour
             {
                 isHolding = false;
                 holdTimer = 0f;
-                shutdownManager.CancelShutdownCharge();
+                shutdownHandler.CancelShutdownCharge();
             }
         }
     }
-
-    /*void OnInteractStarted(InputAction.CallbackContext context)
-    {
-        if (!playerInRange) return;
-
-        isHolding = true;
-        holdTimer = 0f;
-
-        shutdownManager.BeginShutdownCharge();
-    }
-
-    void OnInteractCanceled(InputAction.CallbackContext context)
-    {
-        if (!isHolding) return;
-
-        isHolding = false;
-        holdTimer = 0f;
-
-        shutdownManager.CancelShutdownCharge();
-    }
-    */
 
     void OnTriggerEnter(Collider other)
     {

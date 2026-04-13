@@ -18589,6 +18589,7 @@ MonoBehaviour:
   interactAction: {fileID: 832318261}
   requiredHoldTime: 5
   isUsed: 0
+  shutdownHandlerObject: {fileID: 261766497}
 --- !u!1001 &1653953040
 PrefabInstance:
   m_ObjectHideFlags: 0

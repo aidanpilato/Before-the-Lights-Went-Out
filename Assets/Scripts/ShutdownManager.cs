@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEditor;
 
-public class ShutdownManager : MonoBehaviour
+public class ShutdownManager : MonoBehaviour, IShutdownHandler
 {
     [Header("References")]
     public GameObject memoryRoot;
