@@ -34,10 +34,6 @@ Material:
     m_Ints: []
     m_Floats:
     - _CUSTOMCOLORSTINTING: 1
-    - _Smoothness: 0
-    - _WindDensity: 1.45
-    - _WindMovement: 1.1
-    - _WindStrength: 1
     m_Colors:
     - _GroundColor: {r: 0.13207549, g: 0.1289605, b: 0.1289605, a: 1}
     - _TopColor: {r: 0.3018868, g: 0.049839795, b: 0.049839795, a: 1}
