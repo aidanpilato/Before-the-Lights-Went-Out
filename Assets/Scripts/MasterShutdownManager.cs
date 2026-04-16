@@ -3,6 +3,7 @@ using Cinemachine;
 using System.Collections;
 using StarterAssets;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
 
 public class MasterShutdownManager : MonoBehaviour, IShutdownHandler
 {
@@ -11,20 +12,27 @@ public class MasterShutdownManager : MonoBehaviour, IShutdownHandler
     public ThirdPersonController playerMovement;
     public GameObject[] consoleLights;
     public Material consoleLightNoPowerMaterial;
+    public GameObject endPanel;
+    public Volume postProcess;
 
     [Header("Shutdown Settings")]
     public float fovReduction = 20f;
     public float dutchAmount = 25f;
+    public float maxVignette = 0.6f;
 
     private float originalFOV;
+    private float originalVignette;
     private float currentProgress = 0f;
     private bool isCharging = false;
 
-    private LensDistortion lensDistortion;
+    private Vignette vignette;
 
     void Start()
     {
         originalFOV = gameplayCam.m_Lens.FieldOfView;
+        postProcess.profile.TryGet(out Vignette vignette);
+        this.vignette = vignette;
+        originalVignette = vignette.intensity.value;
     }
 
     public void BeginShutdownCharge()
@@ -46,6 +54,9 @@ public class MasterShutdownManager : MonoBehaviour, IShutdownHandler
 
         gameplayCam.m_Lens.Dutch =
             Mathf.Lerp(0f, dutchAmount, curve);
+        
+        vignette.intensity.value = 
+            Mathf.Lerp(originalVignette, maxVignette, curve);
     }
 
     public void CancelShutdownCharge()
@@ -76,12 +87,16 @@ public class MasterShutdownManager : MonoBehaviour, IShutdownHandler
 
             gameplayCam.m_Lens.Dutch =
                 Mathf.Lerp(startDutch, 0f, t);
+            
+            vignette.intensity.value = 
+                Mathf.Lerp(vignette.intensity.value, originalVignette, t);
 
             yield return null;
         }
 
         gameplayCam.m_Lens.FieldOfView = originalFOV;
         gameplayCam.m_Lens.Dutch = 0f;
+        vignette.intensity.value = originalVignette;
 
         playerMovement.movementLocked = false;
     }
@@ -104,11 +119,12 @@ public class MasterShutdownManager : MonoBehaviour, IShutdownHandler
             }
         }
 
-        playerMovement.movementLocked = false;
+        //playerMovement.movementLocked = false;
 
         isCharging = false;
         currentProgress = 0f;
 
-        // 👉 This is where your fade-to-black system will hook in later
+        // Show end panel
+        endPanel.SetActive(true);
     }
 }
