@@ -53,7 +53,9 @@ namespace StarterAssets
         public float CameraAngleOverride = 0.0f;
         public bool LockCameraPosition = false;
 
-        public bool movementLocked = false; // New variable to control movement locking
+        [Header("Movement Toggles")]
+        public bool sprintEnabled = false;
+        public bool movementLocked = false;
 
         // cinemachine
         private float _cinemachineTargetYaw;
@@ -180,14 +182,11 @@ namespace StarterAssets
 
         private void Move()
         {
-            float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+            bool sprinting = sprintEnabled && _input.sprint;
+            float targetSpeed = sprinting ? SprintSpeed : MoveSpeed;
 
-            // ---- INPUT FORGIVENESS ----
-            Vector2 moveInput = _input.move;
-            if (movementLocked)
-            {
-                moveInput = Vector2.zero;
-            }
+            // Disable movement if movement is locked
+            Vector2 moveInput = movementLocked ? Vector2.zero : _input.move;
             
             float horizontalInput = moveInput.x;
             float absInput = Mathf.Abs(horizontalInput);
@@ -256,7 +255,7 @@ namespace StarterAssets
             if (_hasAnimator)
             {
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
-                _animator.SetFloat(_animIDMotionSpeed, (_input.sprint ? 2f : 1f) * inputMagnitude);
+                _animator.SetFloat(_animIDMotionSpeed, (sprinting ? 2f : 1f) * inputMagnitude);
             }
         }
 
@@ -275,7 +274,7 @@ namespace StarterAssets
                 if (_verticalVelocity < 0.0f)
                     _verticalVelocity = -2f;
 
-                if (_input.jump && _jumpTimeoutDelta <= 0.0f)
+                if (!movementLocked && _input.jump && _jumpTimeoutDelta <= 0.0f)
                 {
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
                     if (_hasAnimator)

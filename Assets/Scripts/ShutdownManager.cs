@@ -13,7 +13,7 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
     public GameObject industrialRoot;
     public Volume postProcess;
     public CinemachineVirtualCamera gameplayCam;
-    public ThirdPersonController playerMovement; // drag your movement script here
+    public ThirdPersonController playerController; // drag your movement script here
     public Animator playerAnimator;
     public GameObject[] consoleLights;
     public Material consoleLightNoPowerMaterial;
@@ -45,7 +45,7 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
         if (shuttingDown) return;
 
         shuttingDown = true;
-        playerMovement.movementLocked = true;
+        playerController.movementLocked = true;
 
         StartCoroutine(ShutdownSequence());
     }
@@ -96,7 +96,7 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
         if (isCharging) return;
 
         isCharging = true;
-        playerMovement.movementLocked = true;
+        playerController.movementLocked = true;
     }
 
     public void UpdateShutdownProgress(float progress)
@@ -154,7 +154,7 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
         gameplayCam.m_Lens.Dutch = 0f;
         lensDistortion.intensity.value = 0f;
 
-        playerMovement.movementLocked = false;
+        playerController.movementLocked = false;
     }
 
     public void CompleteShutdown()
@@ -196,8 +196,13 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
             ch3Lighting.ApplyIndustrialLighting();
         }
 
+        // If current scene not Chapter3, enable sprinting
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "Chapter3")
+        {
+            playerController.sprintEnabled = true;
+        }
         // Restore player control
-        playerMovement.movementLocked = false;
+        playerController.movementLocked = false;
 
         // Reset state
         isCharging = false;

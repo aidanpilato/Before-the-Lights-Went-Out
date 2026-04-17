@@ -3580,14 +3580,13 @@ MonoBehaviour:
   industrialRoot: {fileID: 633300865}
   postProcess: {fileID: 1438459225}
   gameplayCam: {fileID: 390605306}
-  playerMovement: {fileID: 1758787773}
+  playerController: {fileID: 1758787773}
   playerAnimator: {fileID: 1758787775}
   consoleLights:
   - {fileID: 1537097786}
   - {fileID: 1344878605}
   - {fileID: 1693234386}
   consoleLightNoPowerMaterial: {fileID: 2100000, guid: 9456a7f8681accc4287a0dafa9051e4e, type: 2}
-  industrialLighting: {fileID: 112000000, guid: 3da83c6cea5a747459fe196a8f3ea66e, type: 2}
   shutdownDuration: 5
   fovReduction: 12
   dutchAmount: 5

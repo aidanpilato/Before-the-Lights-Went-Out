@@ -9,7 +9,7 @@ public class MasterShutdownManager : MonoBehaviour, IShutdownHandler
 {
     [Header("References")]
     public CinemachineVirtualCamera gameplayCam;
-    public ThirdPersonController playerMovement;
+    public ThirdPersonController playerController;
     public GameObject[] consoleLights;
     public Material consoleLightNoPowerMaterial;
     public GameObject endPanel;
@@ -40,7 +40,7 @@ public class MasterShutdownManager : MonoBehaviour, IShutdownHandler
         if (isCharging) return;
 
         isCharging = true;
-        playerMovement.movementLocked = true;
+        playerController.movementLocked = true;
     }
 
     public void UpdateShutdownProgress(float progress)
@@ -98,7 +98,7 @@ public class MasterShutdownManager : MonoBehaviour, IShutdownHandler
         gameplayCam.m_Lens.Dutch = 0f;
         vignette.intensity.value = originalVignette;
 
-        playerMovement.movementLocked = false;
+        playerController.movementLocked = false;
     }
 
     public void CompleteShutdown()
@@ -119,7 +119,7 @@ public class MasterShutdownManager : MonoBehaviour, IShutdownHandler
             }
         }
 
-        //playerMovement.movementLocked = false;
+        playerController.movementLocked = false;
 
         isCharging = false;
         currentProgress = 0f;

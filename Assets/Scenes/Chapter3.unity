@@ -4569,7 +4569,7 @@ MonoBehaviour:
   industrialRoot: {fileID: 633300865}
   postProcess: {fileID: 1438459225}
   gameplayCam: {fileID: 390605306}
-  playerMovement: {fileID: 1758787773}
+  playerController: {fileID: 1758787773}
   playerAnimator: {fileID: 1758787775}
   consoleLights:
   - {fileID: 1537097786}
@@ -9929,7 +9929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MasterShutdownManager
   gameplayCam: {fileID: 390605306}
-  playerMovement: {fileID: 1758787773}
+  playerController: {fileID: 1758787773}
   consoleLights:
   - {fileID: 494749531}
   - {fileID: 2091416515}
