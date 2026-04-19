@@ -5704,7 +5704,7 @@ Transform:
   m_GameObject: {fileID: 425076176}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 196.9, y: 0, z: 0}
+  m_LocalPosition: {x: 225.2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5722,7 +5722,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67ab5854fc17b248983e47ec11f8e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MemoryClipTrigger
-  clip: {fileID: 8300000, guid: e97c91220af496744a4e62a710045630, type: 3}
+  clip: {fileID: 8300000, guid: d5fe0e4e23ff34041b7c46a9524d0f65, type: 3}
+  length: 31.642994
+  playerWalkSpeed: 2
   hasPlayed: 0
 --- !u!1 &427716370
 GameObject:
@@ -16324,7 +16326,7 @@ Transform:
   m_GameObject: {fileID: 1257403144}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 99.2, y: 0, z: 0}
+  m_LocalPosition: {x: 135.1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16342,7 +16344,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67ab5854fc17b248983e47ec11f8e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MemoryClipTrigger
-  clip: {fileID: 8300000, guid: 419eac194d2a8af44b167762c8781cff, type: 3}
+  clip: {fileID: 8300000, guid: 346d1c8e231b31d4cb87cb51b2fa6e21, type: 3}
+  length: 33.819862
+  playerWalkSpeed: 2
   hasPlayed: 0
 --- !u!1001 &1263127512
 PrefabInstance:
@@ -16912,7 +16916,7 @@ Transform:
   m_GameObject: {fileID: 1310920116}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 292.5, y: 0, z: 0}
+  m_LocalPosition: {x: 303.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16930,7 +16934,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67ab5854fc17b248983e47ec11f8e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MemoryClipTrigger
-  clip: {fileID: 8300000, guid: 5e4ace370c3cba640ad43406e9fcc41d, type: 3}
+  clip: {fileID: 8300000, guid: dfe5c22e85af9da4c93501b2a53707ff, type: 3}
+  length: 33.192924
+  playerWalkSpeed: 2
   hasPlayed: 0
 --- !u!1 &1325044671
 GameObject:
@@ -25430,7 +25436,7 @@ Transform:
   m_GameObject: {fileID: 1936122529}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.62, y: 0, z: 0}
+  m_LocalPosition: {x: 45.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25448,7 +25454,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67ab5854fc17b248983e47ec11f8e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MemoryClipTrigger
-  clip: {fileID: 8300000, guid: cb35c126134368649a0301dc28c40f89, type: 3}
+  clip: {fileID: 8300000, guid: d5d8370c36f67bf4dacfdcd706d3d481, type: 3}
+  length: 30.876734
+  playerWalkSpeed: 2
   hasPlayed: 0
 --- !u!1001 &1954108449
 PrefabInstance:
