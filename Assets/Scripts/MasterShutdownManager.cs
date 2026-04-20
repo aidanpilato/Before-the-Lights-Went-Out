@@ -119,7 +119,7 @@ public class MasterShutdownManager : MonoBehaviour, IShutdownHandler
             }
         }
 
-        playerController.movementLocked = false;
+        playerController.movementLocked = true;
 
         isCharging = false;
         currentProgress = 0f;
