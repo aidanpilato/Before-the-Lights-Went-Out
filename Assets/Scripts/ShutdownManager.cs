@@ -17,7 +17,7 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
     public Animator playerAnimator;
     public GameObject[] consoleLights;
     public Material consoleLightNoPowerMaterial;
-    //public LightingDataAsset industrialLighting;
+    public AudioClip industrialAmbience;
 
     [Header("Shutdown Settings")]
     public float shutdownDuration = 5f;
@@ -185,16 +185,15 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
             }
         }
 
-        // Update lighting to industrial preset
-        //Lightmapping.lightingDataAsset = industrialLighting;
         DynamicGI.UpdateEnvironment();
-        Debug.Log("Lighting data asset switched!");
 
         Ch3LightingManager ch3Lighting = GetComponent<Ch3LightingManager>();
         if (ch3Lighting != null)
         {
             ch3Lighting.ApplyIndustrialLighting();
         }
+
+        AudioManager.Instance.CutToAmbience(industrialAmbience);
 
         // If current scene not Chapter3, enable sprinting
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "Chapter3")

@@ -3038,6 +3038,7 @@ MonoBehaviour:
   - {fileID: 1344878605}
   - {fileID: 1693234386}
   consoleLightNoPowerMaterial: {fileID: 2100000, guid: 9456a7f8681accc4287a0dafa9051e4e, type: 2}
+  industrialAmbience: {fileID: 8300000, guid: 0fba4daa4a89f934c89165a4ccfbbcbc, type: 3}
   shutdownDuration: 5
   fovReduction: 12
   dutchAmount: 5

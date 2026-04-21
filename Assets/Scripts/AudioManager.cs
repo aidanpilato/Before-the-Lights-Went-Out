@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
     [Header("Settings")]
     public float defaultFadeTime = 2f;
 
+    private Coroutine currentFade;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -43,7 +45,7 @@ public class AudioManager : MonoBehaviour
     public void FadeToAmbience(AudioClip newClip, float fadeTime = -1f)
     {
         if (fadeTime <= 0) fadeTime = defaultFadeTime;
-        StartCoroutine(FadeAmbienceRoutine(newClip, fadeTime));
+        currentFade = StartCoroutine(FadeAmbienceRoutine(newClip, fadeTime));
     }
 
     private IEnumerator FadeAmbienceRoutine(AudioClip newClip, float fadeTime)
@@ -69,6 +71,15 @@ public class AudioManager : MonoBehaviour
         }
 
         ambienceSource.volume = startVolume;
+    }
+
+    public void CutToAmbience(AudioClip newClip, float volume = 1f)
+    {
+        if (currentFade != null)
+            StopCoroutine(currentFade);
+
+        StopAmbience();
+        PlayAmbience(newClip, volume);
     }
 
     // =========================
