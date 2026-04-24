@@ -18,6 +18,7 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
     public GameObject[] consoleLights;
     public Material consoleLightNoPowerMaterial;
     public AudioClip industrialAmbience;
+    public Canvas promptCanvas;
 
     [Header("Shutdown Settings")]
     public float shutdownDuration = 5f;
@@ -174,6 +175,12 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
 
         // Adjust post-processing for industrial look
         colorAdjustments.postExposure.value = -1.72f;
+
+        // Disable prompt canvas
+        if (promptCanvas != null)
+        {
+            promptCanvas.enabled = false;
+        }
         
         // Change material of console lights
         for (int i = 0; i < consoleLights.Length; i++)
