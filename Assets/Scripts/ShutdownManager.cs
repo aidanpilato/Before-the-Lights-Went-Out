@@ -68,8 +68,9 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
 
             gameplayCam.m_Lens.Dutch =
                 Mathf.Lerp(0f, dutchAmount, curve);
-            
-            lensDistortion.intensity.value = Mathf.Lerp(0f, -1f, curve);
+
+            lensDistortion.intensity.value =
+                Mathf.Lerp(0f, -1f, EvaluateDistortion(t));
 
             yield return null;
         }
@@ -112,7 +113,10 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
         gameplayCam.m_Lens.Dutch =
             Mathf.Lerp(0f, dutchAmount, curve);
         
-        lensDistortion.intensity.value = Mathf.Lerp(0f, -1f, curve);
+        float t = currentProgress;
+        
+        lensDistortion.intensity.value =
+            Mathf.Lerp(0f, -1f, EvaluateDistortion(t));
     }
 
     public void CancelShutdownCharge()
@@ -213,5 +217,13 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
         // Reset state
         isCharging = false;
         currentProgress = 0f;
+    }
+
+    float EvaluateDistortion(float t)
+    {
+        float distortionStart = 0.9f;
+        float distortionT = Mathf.InverseLerp(distortionStart, 1f, t);
+        distortionT = Mathf.Clamp01(distortionT);
+        return Mathf.Pow(distortionT, 3f);
     }
 }
