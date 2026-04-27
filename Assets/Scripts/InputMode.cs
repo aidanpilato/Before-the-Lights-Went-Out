@@ -5,6 +5,11 @@ public class SimpleInputMode : MonoBehaviour
 {
     public static bool UsingController;
 
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     void Update()
     {
         // Check last used device

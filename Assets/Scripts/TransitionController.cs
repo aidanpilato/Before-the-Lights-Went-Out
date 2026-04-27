@@ -2,7 +2,9 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class TransitionController : MonoBehaviour
 {
@@ -19,6 +21,9 @@ public class TransitionController : MonoBehaviour
 
     private float defaultBloom;
     private float defaultExposure;
+
+    [Header("UI Fade")]
+    public Image fadePanel;
 
     void Awake()
     {
@@ -64,6 +69,7 @@ public class TransitionController : MonoBehaviour
         StartCoroutine(FadeTransition(
             defaultBloom, maxBloom,
             defaultExposure, maxExposure,
+            0f, 1f, // panel: transparent → white
             duration));
     }
 
@@ -72,30 +78,63 @@ public class TransitionController : MonoBehaviour
         StartCoroutine(FadeTransition(
             maxBloom, defaultBloom,
             maxExposure, defaultExposure,
+            1f, 0f, // panel: white → transparent
             duration));
     }
 
     IEnumerator FadeTransition(
-        float bloomStart, float bloomEnd,
-        float exposureStart, float exposureEnd,
-        float duration)
+    float bloomStart, float bloomEnd,
+    float exposureStart, float exposureEnd,
+    float panelStart, float panelEnd,
+    float duration)
     {
         if (bloom == null || colorAdjustments == null) yield break;
 
         float time = 0f;
+
+        Color panelColor = fadePanel != null ? fadePanel.color : Color.white;
 
         while (time < duration)
         {
             time += Time.deltaTime;
             float t = time / duration;
 
-            bloom.intensity.value = Mathf.Lerp(bloomStart, bloomEnd, t);
-            colorAdjustments.postExposure.value = Mathf.Lerp(exposureStart, exposureEnd, t);
+            float easedT = Mathf.SmoothStep(0f, 1f, t);
+
+            // Post-processing
+            bloom.intensity.value = Mathf.Lerp(bloomStart, bloomEnd, easedT);
+            colorAdjustments.postExposure.value = Mathf.Lerp(exposureStart, exposureEnd, easedT);
+
+            // Panel (direct + predictable)
+            if (fadePanel != null)
+            {
+                float panelT = Mathf.Clamp01((t - 0.15f) / 0.85f);
+                float easedPanelT = Mathf.SmoothStep(0f, 1f, panelT);
+                float alpha = Mathf.Lerp(panelStart, panelEnd, easedPanelT);
+
+                fadePanel.color = new Color(
+                    panelColor.r,
+                    panelColor.g,
+                    panelColor.b,
+                    alpha
+                );
+            }
 
             yield return null;
         }
 
+        // Final values
         bloom.intensity.value = bloomEnd;
         colorAdjustments.postExposure.value = exposureEnd;
+
+        if (fadePanel != null)
+        {
+            fadePanel.color = new Color(
+                panelColor.r,
+                panelColor.g,
+                panelColor.b,
+                panelEnd
+            );
+        }
     }
 }
