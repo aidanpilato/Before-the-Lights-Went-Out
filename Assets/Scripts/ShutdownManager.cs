@@ -179,6 +179,7 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
 
         // Adjust post-processing for industrial look
         colorAdjustments.postExposure.value = -1.72f;
+        Debug.Log("Post Exposure set to: " + colorAdjustments.postExposure.value);
 
         // Disable prompt canvas
         if (promptCanvas != null)
@@ -202,15 +203,25 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
         if (ch3Lighting != null)
         {
             ch3Lighting.ApplyIndustrialLighting();
+            Debug.Log("Applied ch3 industrial lighting");
         }
 
-        AudioManager.Instance.CutToAmbience(industrialAmbience);
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.CutToAmbience(industrialAmbience);
+        }
+        else
+        {
+            Debug.LogWarning("AudioManager instance not found!");
+        }
 
         // If current scene not Chapter3, enable sprinting
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "Chapter3")
         {
             playerController.sprintEnabled = true;
+            Debug.Log("Sprinting enabled: " + playerController.sprintEnabled);
         }
+        
         // Restore player control
         playerController.movementLocked = false;
 
