@@ -4819,7 +4819,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7433002186825299812, guid: 644536401fa9a5548954222bcd937f00, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7433002186825299812, guid: 644536401fa9a5548954222bcd937f00, type: 3}
       propertyPath: m_Lightmapping
@@ -4827,7 +4827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8223422583348755004, guid: 644536401fa9a5548954222bcd937f00, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8223422583348755004, guid: 644536401fa9a5548954222bcd937f00, type: 3}
       propertyPath: m_Lightmapping
@@ -4842,7 +4842,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6979278757612179301, guid: 644536401fa9a5548954222bcd937f00, type: 3}
       insertIndex: 8
       addedObject: {fileID: 1780286938}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4338956895143797624, guid: 644536401fa9a5548954222bcd937f00, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1661222876}
+    - targetCorrespondingSourceObject: {fileID: 8755161341598315959, guid: 644536401fa9a5548954222bcd937f00, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 634631315}
   m_SourcePrefab: {fileID: 100100000, guid: 644536401fa9a5548954222bcd937f00, type: 3}
 --- !u!4 &266340722 stripped
 Transform:
@@ -5211,6 +5217,7 @@ GameObject:
   - component: {fileID: 290975807}
   - component: {fileID: 290975809}
   - component: {fileID: 290975808}
+  - component: {fileID: 290975810}
   m_Layer: 0
   m_Name: Spot Light (7)
   m_TagString: Untagged
@@ -5327,6 +5334,22 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &290975810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290975806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6093276fdcbed45b9c253a3195098e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightFlicker
+  minIntensity: 0.5
+  maxIntensity: 450
+  flickerSpeed: 0.04
+  randomness: 0.6
 --- !u!1 &301927303
 GameObject:
   m_ObjectHideFlags: 0
@@ -11605,7 +11628,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &633300866
 Transform:
   m_ObjectHideFlags: 0
@@ -11626,6 +11649,27 @@ Transform:
   - {fileID: 80976039}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &634631311 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8755161341598315959, guid: 644536401fa9a5548954222bcd937f00, type: 3}
+  m_PrefabInstance: {fileID: 266340721}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &634631315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634631311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6093276fdcbed45b9c253a3195098e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightFlicker
+  minIntensity: 1.5
+  maxIntensity: 450
+  flickerSpeed: 0.04
+  randomness: 0.6
 --- !u!1001 &637874055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26080,7 +26124,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1493769998
 Transform:
   m_ObjectHideFlags: 0
@@ -29623,6 +29667,27 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da72183de3210ad4fbf3a53cd242a5c8, type: 3}
+--- !u!1 &1661222872 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4338956895143797624, guid: 644536401fa9a5548954222bcd937f00, type: 3}
+  m_PrefabInstance: {fileID: 266340721}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1661222876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661222872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6093276fdcbed45b9c253a3195098e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LightFlicker
+  minIntensity: 1.5
+  maxIntensity: 175
+  flickerSpeed: 0.04
+  randomness: 0.6
 --- !u!1 &1670259931
 GameObject:
   m_ObjectHideFlags: 0
