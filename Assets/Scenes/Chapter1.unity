@@ -6437,16 +6437,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 18220932, guid: ec2aa1014a797c54eb478896b8a82d02, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 18220932, guid: ec2aa1014a797c54eb478896b8a82d02, type: 3}
       propertyPath: m_WindMain
-      value: 0.4
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 18220932, guid: ec2aa1014a797c54eb478896b8a82d02, type: 3}
       propertyPath: m_WindTurbulence
-      value: 0.5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 18220932, guid: ec2aa1014a797c54eb478896b8a82d02, type: 3}
       propertyPath: m_WindPulseFrequency
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 18220932, guid: ec2aa1014a797c54eb478896b8a82d02, type: 3}
+      propertyPath: m_WindPulseMagnitude
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 5882393046080109602, guid: ec2aa1014a797c54eb478896b8a82d02, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8851,9 +8863,9 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: 6f186ea0c91ccad46989869aa55d23d8, type: 2}
-  m_TreeDistance: 135
-  m_TreeBillboardDistance: 50
-  m_TreeCrossFadeLength: 5
+  m_TreeDistance: 75
+  m_TreeBillboardDistance: 30
+  m_TreeCrossFadeLength: 10
   m_TreeMaximumFullLODCount: 40
   m_DetailObjectDistance: 150
   m_DetailObjectDensity: 1
