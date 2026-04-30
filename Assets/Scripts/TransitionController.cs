@@ -88,7 +88,7 @@ public class TransitionController : MonoBehaviour
     float panelStart, float panelEnd,
     float duration)
     {
-        if (bloom == null || colorAdjustments == null) yield break;
+        bool hasPost = bloom != null && colorAdjustments != null;
 
         float time = 0f;
 
@@ -100,10 +100,13 @@ public class TransitionController : MonoBehaviour
             float t = time / duration;
 
             float easedT = Mathf.SmoothStep(0f, 1f, t);
-
-            // Post-processing
-            bloom.intensity.value = Mathf.Lerp(bloomStart, bloomEnd, easedT);
-            colorAdjustments.postExposure.value = Mathf.Lerp(exposureStart, exposureEnd, easedT);
+            
+            if (hasPost)
+            {
+                // Post-processing
+                bloom.intensity.value = Mathf.Lerp(bloomStart, bloomEnd, easedT);
+                colorAdjustments.postExposure.value = Mathf.Lerp(exposureStart, exposureEnd, easedT);
+            }
 
             // Panel (direct + predictable)
             if (fadePanel != null)
@@ -123,9 +126,12 @@ public class TransitionController : MonoBehaviour
             yield return null;
         }
 
-        // Final values
-        bloom.intensity.value = bloomEnd;
-        colorAdjustments.postExposure.value = exposureEnd;
+        if (hasPost)
+        {
+            // Reset post-processing to final values
+            bloom.intensity.value = bloomEnd;
+            colorAdjustments.postExposure.value = exposureEnd;
+        }
 
         if (fadePanel != null)
         {

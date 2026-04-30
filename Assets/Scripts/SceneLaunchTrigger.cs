@@ -18,9 +18,16 @@ public class SceneLaunchTrigger : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            triggered = true;
             StartCoroutine(Transition());
         }
+    }
+
+    public void StartTransition()
+    {
+        if (triggered) return;
+
+        StartCoroutine(Transition());
+        triggered = true;
     }
 
     IEnumerator Transition()
