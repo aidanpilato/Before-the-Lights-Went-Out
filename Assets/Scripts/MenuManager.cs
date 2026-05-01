@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
@@ -8,27 +9,25 @@ public class MenuManager : MonoBehaviour
 
     [Header("UI")]
     public GameObject firstSelected;
+    public Transform[] allButtons;
 
-    [Header("Menu Actions")]
+    [Header("Scene")]
     public string gameSceneName = "GameScene";
 
-    [Header("Hover Settings")]
+    [Header("Visuals")]
     public Vector3 normalScale = Vector3.one;
     public Vector3 hoverScale = new Vector3(1.1f, 1.1f, 1.1f);
     public float lerpSpeed = 10f;
 
-    [Header("Menu Buttons")]
-    public Transform[] allButtons;
+    public Color normalColor = new Color(0.7f, 0.7f, 0.7f);
+    public Color hoverColor = Color.white;
 
     private Transform currentHoverTarget;
     private bool lastWasController;
 
     void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
+        Instance = this;
     }
 
     void Start()
@@ -40,16 +39,10 @@ public class MenuManager : MonoBehaviour
     void Update()
     {
         HandleInputModeSwitch();
-        UpdateButtonScales();
+        UpdateVisuals();
     }
 
-    // ---------------- SELECTION ----------------
-
-    public void Select(GameObject obj)
-    {
-        if (obj == null) return;
-        EventSystem.current.SetSelectedGameObject(obj);
-    }
+    // ---------------- INPUT MODE SWITCH ----------------
 
     void HandleInputModeSwitch()
     {
@@ -58,33 +51,33 @@ public class MenuManager : MonoBehaviour
 
         lastWasController = usingController;
 
-        // Reset all buttons to normal scale immediately on any mode switch
+        // Reset visuals instantly
         foreach (var b in allButtons)
         {
-            if (b != null)
-                b.localScale = normalScale;
-            
-            var pointer = b.GetComponent<MenuButtonPointer>();
-            if (pointer != null)
-                pointer.enabled = !usingController;
+            if (b == null) continue;
+            b.localScale = normalScale;
+
+            var text = b.GetComponentInChildren<TMP_Text>();
+            if (text != null)
+                text.color = normalColor;
         }
 
         currentHoverTarget = null;
-        
-        if (!usingController)
+
+        if (usingController)
         {
-            // Switched TO MOUSE: clear controller selection
-            EventSystem.current.SetSelectedGameObject(null);
-        }
-        else
-        {
-            // Switched TO CONTROLLER: restore selection
+            // Switching TO controller
             if (EventSystem.current.currentSelectedGameObject == null && firstSelected != null)
                 Select(firstSelected);
         }
+        else
+        {
+            // Switching TO mouse
+            EventSystem.current.SetSelectedGameObject(null);
+        }
     }
 
-    // ---------------- HOVER ----------------
+    // ---------------- HOVER (MOUSE) ----------------
 
     public void SetHover(Transform t)
     {
@@ -92,27 +85,40 @@ public class MenuManager : MonoBehaviour
         currentHoverTarget = t;
     }
 
-    public void ClearHover(Transform t)
-    {
-        // Only clear if this button is actually the current hover target,
-        // preventing a late-exiting button from wiping another button's hover
-        if (t == currentHoverTarget)
-            currentHoverTarget = null;
-    }
+    // ---------------- VISUALS ----------------
 
-    void UpdateButtonScales()
+    void UpdateVisuals()
     {
+        GameObject selected = EventSystem.current.currentSelectedGameObject;
+
         foreach (var b in allButtons)
         {
             if (b == null) continue;
 
             bool isActive = SimpleInputMode.UsingController
-                ? b.gameObject == EventSystem.current.currentSelectedGameObject
+                ? b.gameObject == selected
                 : b == currentHoverTarget;
 
-            Vector3 target = isActive ? hoverScale : normalScale;
-            b.localScale = Vector3.Lerp(b.localScale, target, Time.deltaTime * lerpSpeed);
+            // SCALE
+            Vector3 targetScale = isActive ? hoverScale : normalScale;
+            b.localScale = Vector3.Lerp(b.localScale, targetScale, Time.deltaTime * lerpSpeed);
+
+            // COLOR
+            var text = b.GetComponentInChildren<TMP_Text>();
+            if (text != null)
+            {
+                Color targetColor = isActive ? hoverColor : normalColor;
+                text.color = Color.Lerp(text.color, targetColor, Time.deltaTime * lerpSpeed);
+            }
         }
+    }
+
+    // ---------------- SELECTION ----------------
+
+    public void Select(GameObject obj)
+    {
+        if (obj == null) return;
+        EventSystem.current.SetSelectedGameObject(obj);
     }
 
     // ---------------- ACTIONS ----------------

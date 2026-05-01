@@ -853,6 +853,7 @@ GameObject:
   - component: {fileID: 890083366}
   - component: {fileID: 890083365}
   - component: {fileID: 890083364}
+  - component: {fileID: 890083367}
   m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
@@ -899,7 +900,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -974,6 +975,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890083362}
   m_CullTransparentMesh: 1
+--- !u!114 &890083367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890083362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9b00ed2a6046d49b1878b7e6da807b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuButtonPointer
 --- !u!1 &1162459069
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,6 +999,7 @@ GameObject:
   - component: {fileID: 1162459073}
   - component: {fileID: 1162459072}
   - component: {fileID: 1162459071}
+  - component: {fileID: 1162459074}
   m_Layer: 5
   m_Name: Play Button
   m_TagString: Untagged
@@ -1032,7 +1046,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 890083364}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1107,6 +1121,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162459069}
   m_CullTransparentMesh: 1
+--- !u!114 &1162459074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162459069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9b00ed2a6046d49b1878b7e6da807b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuButtonPointer
 --- !u!1 &1195863801
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,8 +1199,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4287401100
+  m_fontColor: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1512,8 +1538,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4287401100
+  m_fontColor: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1628,13 +1654,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuManager
   firstSelected: {fileID: 1162459069}
+  allButtons:
+  - {fileID: 1162459070}
+  - {fileID: 890083363}
   gameSceneName: Chapter1
   normalScale: {x: 2.6, y: 2.6, z: 2.6}
   hoverScale: {x: 2.8, y: 2.8, z: 2.8}
   lerpSpeed: 10
-  allButtons:
-  - {fileID: 1162459070}
-  - {fileID: 890083363}
+  normalColor: {r: 0.7, g: 0.7, b: 0.7, a: 1}
+  hoverColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
