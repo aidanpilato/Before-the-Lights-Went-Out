@@ -3675,7 +3675,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.06104851, y: 0, z: 0, w: 0.99813485}
-  m_LocalPosition: {x: -0.51797485, y: 2.5713463, z: -4.905288}
+  m_LocalPosition: {x: 374.51202, y: 2.5713463, z: -4.905288}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5043,7 +5043,7 @@ Transform:
   m_GameObject: {fileID: 390605305}
   serializedVersion: 2
   m_LocalRotation: {x: 0.06104851, y: 0, z: 0, w: 0.99813485}
-  m_LocalPosition: {x: -0.51797485, y: 2.5713463, z: -4.905288}
+  m_LocalPosition: {x: 374.51202, y: 2.5713463, z: -4.905288}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8577,6 +8577,7 @@ GameObject:
   - component: {fileID: 650980937}
   - component: {fileID: 650980941}
   - component: {fileID: 650980940}
+  - component: {fileID: 650980942}
   m_Layer: 5
   m_Name: Prompt Canvas
   m_TagString: Untagged
@@ -8692,13 +8693,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce5550fe73805184e82983b4d6dfae40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConsoleUIPrompt
-  actionText: {fileID: 687206022}
-  buttonImage: {fileID: 1155749099}
-  keyboardSprite: {fileID: -1350719223, guid: 069a00c4a21d8654bbe27600f3ba7103, type: 3}
-  controllerSprite: {fileID: 1326238866, guid: 069a00c4a21d8654bbe27600f3ba7103, type: 3}
   player: {fileID: 905107281}
   maxDistance: 5
   minDistance: 2
+--- !u!114 &650980942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650980935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0abc26eadc0fc9b449ebbe19b3a2c3c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InputSpriteSwitcher
+  targetImage: {fileID: 1155749099}
+  keyboardSprite: {fileID: -1350719223, guid: 069a00c4a21d8654bbe27600f3ba7103, type: 3}
+  controllerSprite: {fileID: 1326238866, guid: 069a00c4a21d8654bbe27600f3ba7103, type: 3}
 --- !u!1 &654965872
 GameObject:
   m_ObjectHideFlags: 0
@@ -9235,7 +9247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachineTrackedDolly
   m_Path: {fileID: 881066788}
-  m_PathPosition: 0
+  m_PathPosition: 1
   m_PositionUnits: 2
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 0.4
@@ -9299,7 +9311,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.04
+      value: 372.99
       objectReference: {fileID: 0}
     - target: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16946,8 +16958,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409403788}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.055300098, y: -0.50611246, z: 0.032541335, w: 0.8600775}
-  m_LocalPosition: {x: -9.468964, y: 2.5, z: -1.2817595}
+  m_LocalRotation: {x: 0.04870401, y: 0.64968944, z: -0.04177296, w: 0.757487}
+  m_LocalPosition: {x: 49.783447, y: 2.5, z: -1.2817638}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

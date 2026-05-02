@@ -32,25 +32,28 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
-        lastWasController = SimpleInputMode.UsingController;
-        Select(firstSelected);
+        HandleInputModeSwitch(SimpleInputMode.UsingController);
     }
 
     void Update()
     {
-        HandleInputModeSwitch();
         UpdateVisuals();
     }
 
     // ---------------- INPUT MODE SWITCH ----------------
 
-    void HandleInputModeSwitch()
+    void OnEnable()
     {
-        bool usingController = SimpleInputMode.UsingController;
-        if (usingController == lastWasController) return;
+        SimpleInputMode.OnInputModeChanged += HandleInputModeSwitch;
+    }
 
-        lastWasController = usingController;
+    void OnDisable()
+    {
+        SimpleInputMode.OnInputModeChanged -= HandleInputModeSwitch;
+    }
 
+    void HandleInputModeSwitch(bool usingController)
+    {
         // Reset visuals instantly
         foreach (var b in allButtons)
         {
