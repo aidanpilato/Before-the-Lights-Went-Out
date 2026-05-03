@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class ConsoleInteraction : MonoBehaviour
 {
     [Header("Input")]
-    public InputActionReference interactAction;
+    public InputActionReference primaryInteractAction;
 
     [Header("Settings")]
     public float requiredHoldTime = 5f;
@@ -25,12 +25,12 @@ public class ConsoleInteraction : MonoBehaviour
 
     void OnEnable()
     {
-        interactAction.action.Enable();
+        primaryInteractAction.action.Enable();
     }
 
     void OnDisable()
     {
-        interactAction.action.Disable();
+        primaryInteractAction.action.Disable();
     }
 
     void Update()
@@ -46,7 +46,7 @@ public class ConsoleInteraction : MonoBehaviour
         if (!playerInRange)
             return;
 
-        if (interactAction.action.IsPressed())
+        if (primaryInteractAction.action.IsPressed())
         {
             if (!isHolding)
             {

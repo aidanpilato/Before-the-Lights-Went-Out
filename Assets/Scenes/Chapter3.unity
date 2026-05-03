@@ -11514,7 +11514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7432b0be123694889c5ca7033ce6f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConsoleInteraction
-  interactAction: {fileID: 832318261}
+  primaryInteractAction: {fileID: 1364979808}
   requiredHoldTime: 5
   isUsed: 0
   shutdownHandlerObject: {fileID: 532493732}
@@ -15632,20 +15632,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4560664707586174298, guid: dd797df125b2aac4da0067723fc6fd7e, type: 3}
   m_PrefabInstance: {fileID: 822108143}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &832318261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
-  m_Name: Player/Interact
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
-  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  m_ActionId: 852140f2-7766-474d-8707-702459ba45f3
 --- !u!1001 &835211730
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23035,6 +23021,20 @@ ReflectionProbe:
   m_UseOcclusionCulling: 1
   m_Importance: 1
   m_CustomBakedTexture: {fileID: 0}
+--- !u!114 &1364979808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Player/PrimaryInteract
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_ActionId: 852140f2-7766-474d-8707-702459ba45f3
 --- !u!1001 &1367400560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29233,7 +29233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7432b0be123694889c5ca7033ce6f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConsoleInteraction
-  interactAction: {fileID: 832318261}
+  primaryInteractAction: {fileID: 2071198513}
   requiredHoldTime: 5
   isUsed: 0
   shutdownHandlerObject: {fileID: 261766497}
@@ -36094,6 +36094,20 @@ Transform:
   - {fileID: 1708856997}
   m_Father: {fileID: 1454414214}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2071198513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
+  m_Name: Player/PrimaryInteract
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
+  m_Asset: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_ActionId: 852140f2-7766-474d-8707-702459ba45f3
 --- !u!1 &2075174505
 GameObject:
   m_ObjectHideFlags: 0
