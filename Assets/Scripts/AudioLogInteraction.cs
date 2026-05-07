@@ -4,6 +4,10 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(AudioSource))]
 public class AudioLogInteraction : MonoBehaviour
 {
+    [Header("Audio Clips")]
+    [SerializeField] private AudioClip clip1;
+    [SerializeField] private AudioClip clip2;
+
     [Header("Input")]
     public InputActionReference secondaryInteractAction;
 
@@ -15,6 +19,7 @@ public class AudioLogInteraction : MonoBehaviour
     private bool playerInRange = false;
     private bool isPlaying = false;
     private float targetAlpha = 0f;
+    private int currentClipIndex = 0;
 
     private AudioSource audioSource;
 
@@ -49,12 +54,28 @@ public class AudioLogInteraction : MonoBehaviour
         {
             if (!audioSource.isPlaying)
             {
-                isPlaying = false;
-                targetAlpha = 1f;
+                // First clip finished
+                if (currentClipIndex == 0)
+                {
+                    currentClipIndex = 1;
+
+                    audioSource.clip = clip2;
+                    audioSource.Play();
+                }
+                // Second clip finished
+                else
+                {
+                    isPlaying = false;
+                    currentClipIndex = 0;
+
+                    targetAlpha = 1f;
+                }
             }
+
             return;
         }
 
+        // Interaction
         if (secondaryInteractAction.action.WasPressedThisFrame())
         {
             PlayAudioLog();
@@ -63,9 +84,18 @@ public class AudioLogInteraction : MonoBehaviour
 
     void PlayAudioLog()
     {
+        if (clip1 == null || clip2 == null)
+        {
+            Debug.LogWarning("Missing audio clips on " + gameObject.name);
+            return;
+        }
+
         isPlaying = true;
         targetAlpha = 0f;
 
+        currentClipIndex = 0;
+
+        audioSource.clip = clip1;
         audioSource.Play();
     }
 
