@@ -15,6 +15,7 @@ public class MasterShutdownManager : MonoBehaviour, IShutdownHandler
     public GameObject endPanel;
     public Volume postProcess;
     public PauseMenu pauseManager;
+    public EndingScreenController endingScreenController;
 
     [Header("Shutdown Settings")]
     public float fovReduction = 20f;
@@ -129,5 +130,6 @@ public class MasterShutdownManager : MonoBehaviour, IShutdownHandler
 
         // Show end panel
         endPanel.SetActive(true);
+        endingScreenController.StartEndingSequence();
     }
 }
