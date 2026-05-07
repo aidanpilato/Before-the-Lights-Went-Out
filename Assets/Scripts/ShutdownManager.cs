@@ -18,6 +18,8 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
     public GameObject[] consoleLights;
     public Material consoleLightNoPowerMaterial;
     public AudioClip industrialAmbience;
+    public AudioClip shutdownSound;
+    public AudioSource sfxSource;
     public Canvas promptCanvas;
 
     [Header("Shutdown Settings")]
@@ -197,7 +199,17 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
             }
         }
 
-        DynamicGI.UpdateEnvironment();
+        // Play shutdown sound
+        if (sfxSource != null && shutdownSound != null)
+        {
+            sfxSource.PlayOneShot(shutdownSound);
+        }
+        else
+        {
+            Debug.LogWarning("SFX Source or Shutdown Sound not set!");
+        }
+
+        //DynamicGI.UpdateEnvironment();
 
         Ch3LightingManager ch3Lighting = GetComponent<Ch3LightingManager>();
         if (ch3Lighting != null)

@@ -15,6 +15,8 @@ public class MasterShutdownManager : MonoBehaviour, IShutdownHandler
     public GameObject endPanel;
     public Volume postProcess;
     public PauseMenu pauseManager;
+    public AudioClip shutdownSound;
+    public AudioSource sfxSource;
     public EndingScreenController endingScreenController;
 
     [Header("Shutdown Settings")]
@@ -121,6 +123,16 @@ public class MasterShutdownManager : MonoBehaviour, IShutdownHandler
             {
                 rend.material = consoleLightNoPowerMaterial;
             }
+        }
+
+        // Play shutdown sound
+        if (sfxSource != null && shutdownSound != null)
+        {
+            sfxSource.PlayOneShot(shutdownSound);
+        }
+        else
+        {
+            Debug.LogWarning("SFX Source or Shutdown Sound not set!");
         }
 
         playerController.movementLocked = true;
