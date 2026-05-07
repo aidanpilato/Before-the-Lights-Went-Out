@@ -3680,7 +3680,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.06104851, y: 0, z: 0, w: 0.99813485}
-  m_LocalPosition: {x: 381.29263, y: 2.5713463, z: -4.905288}
+  m_LocalPosition: {x: -0.51797485, y: 2.5713463, z: -4.905288}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5048,7 +5048,7 @@ Transform:
   m_GameObject: {fileID: 390605305}
   serializedVersion: 2
   m_LocalRotation: {x: 0.06104851, y: 0, z: 0, w: 0.99813485}
-  m_LocalPosition: {x: 381.29263, y: 2.5713463, z: -4.905288}
+  m_LocalPosition: {x: -0.51797485, y: 2.5713463, z: -4.905288}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8310,7 +8310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &633300866
 Transform:
   m_ObjectHideFlags: 0
@@ -9252,7 +9252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Cinemachine::Cinemachine.CinemachineTrackedDolly
   m_Path: {fileID: 881066788}
-  m_PathPosition: 1
+  m_PathPosition: 0
   m_PositionUnits: 2
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 0.4
@@ -9316,7 +9316,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 380.96
+      value: -2.04
       objectReference: {fileID: 0}
     - target: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16997,8 +16997,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409403788}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.048379723, y: 0.6555247, z: -0.04214818, w: 0.75244296}
-  m_LocalPosition: {x: 49.783447, y: 2.5, z: -1.2817638}
+  m_LocalRotation: {x: 0.055300288, y: -0.50611216, z: 0.03254142, w: 0.86007756}
+  m_LocalPosition: {x: -9.468964, y: 2.5, z: -1.2817595}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18393,7 +18393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1493769998
 Transform:
   m_ObjectHideFlags: 0

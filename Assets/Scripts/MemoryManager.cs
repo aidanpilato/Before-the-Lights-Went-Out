@@ -29,15 +29,17 @@ public class MemoryManager : MonoBehaviour
 
     void Update()
     {
-        if (currentIndex >= clips.Count)
-            return;
-
-        clips[currentIndex].TryTrigger(player.position.x);
+        for (int i = currentIndex; i < clips.Count; i++)
+        {
+            clips[i].TryTrigger(player.position.x);
+        }
     }
 
     public void RequestPlay(MemoryClipTrigger clip)
     {
         if (isPlaying) return;
+
+        isPlaying = true;
 
         StartCoroutine(PlayClipCoroutine(clip));
     }
@@ -50,7 +52,7 @@ public class MemoryManager : MonoBehaviour
         audioSource.clip = clip.clip;
         audioSource.Play();
 
-        yield return new WaitUntil(() => !audioSource.isPlaying);
+        yield return new WaitForSecondsRealtime(clip.length);
 
         isPlaying = false;
         currentIndex++;

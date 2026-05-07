@@ -23,7 +23,9 @@ public class MemoryClipTrigger : MonoBehaviour
 
     public void TryTrigger(float playerX)
     {
-        if (!hasPlayed && playerX >= transform.position.x)
+        if (hasPlayed) return;
+
+        if (playerX >= transform.position.x)
         {
             manager.RequestPlay(this);
         }

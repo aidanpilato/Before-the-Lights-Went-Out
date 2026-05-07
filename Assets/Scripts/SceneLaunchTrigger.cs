@@ -10,6 +10,10 @@ public class SceneLaunchTrigger : MonoBehaviour
     [Header("Transition Settings")]
     public float transitionDuration = 3f;
 
+    [Header("Audio")]
+    public AudioSource uiAudioSource;
+    public AudioClip uiSelect;
+
     private bool triggered = false;
 
     private void OnTriggerEnter(Collider other)
@@ -25,9 +29,18 @@ public class SceneLaunchTrigger : MonoBehaviour
     public void StartTransition()
     {
         if (triggered) return;
-
-        StartCoroutine(Transition());
         triggered = true;
+
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            // Play UI click once (Play button feedback)
+            if (uiAudioSource != null && uiSelect != null)
+            {
+                uiAudioSource.PlayOneShot(uiSelect);
+            }
+        }
+        
+        StartCoroutine(Transition());
     }
 
     IEnumerator Transition()

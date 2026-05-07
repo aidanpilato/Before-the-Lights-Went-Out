@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
 
 public class MenuManager : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class MenuManager : MonoBehaviour
     [Header("UI")]
     public GameObject firstSelected;
     public Transform[] allButtons;
+
+    [Header("Audio")]
+    public AudioSource uiAudioSource;
+    public AudioClip hoverTick;
 
     [Header("Scene")]
     public string gameSceneName = "GameScene";
@@ -24,6 +29,7 @@ public class MenuManager : MonoBehaviour
 
     private Transform currentHoverTarget;
     private bool lastWasController;
+    private GameObject lastSelected;
 
     void Awake()
     {
@@ -66,6 +72,7 @@ public class MenuManager : MonoBehaviour
         }
 
         currentHoverTarget = null;
+        lastSelected = null;
 
         if (usingController)
         {
@@ -85,6 +92,9 @@ public class MenuManager : MonoBehaviour
     public void SetHover(Transform t)
     {
         if (SimpleInputMode.UsingController) return;
+
+        if (currentHoverTarget == t) return;
+
         currentHoverTarget = t;
     }
 
@@ -113,6 +123,13 @@ public class MenuManager : MonoBehaviour
                 Color targetColor = isActive ? hoverColor : normalColor;
                 text.color = Color.Lerp(text.color, targetColor, Time.deltaTime * lerpSpeed);
             }
+
+            // SOUND
+            if (isActive && b.gameObject != lastSelected)
+            {
+                PlaySFX(hoverTick);
+                lastSelected = b.gameObject;
+            }
         }
     }
 
@@ -121,19 +138,25 @@ public class MenuManager : MonoBehaviour
     public void Select(GameObject obj)
     {
         if (obj == null) return;
+
+        if (EventSystem.current.currentSelectedGameObject == obj) return;
+
         EventSystem.current.SetSelectedGameObject(obj);
     }
 
     // ---------------- ACTIONS ----------------
 
-    public void PlayGame()
-    {
-        SceneManager.LoadScene(gameSceneName);
-    }
-
     public void QuitGame()
     {
         Debug.Log("Quit Game");
         Application.Quit();
+    }
+
+    // ---------------- AUDIO ----------------
+
+    void PlaySFX(AudioClip clip)
+    {
+        if (clip == null || uiAudioSource == null) return;
+        uiAudioSource.PlayOneShot(clip);
     }
 }
