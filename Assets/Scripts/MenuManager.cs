@@ -51,6 +51,7 @@ public class MenuManager : MonoBehaviour
     void OnEnable()
     {
         SimpleInputMode.OnInputModeChanged += HandleInputModeSwitch;
+        StartCoroutine(ResetMenuState());
     }
 
     void OnDisable()
@@ -85,6 +86,22 @@ public class MenuManager : MonoBehaviour
             // Switching TO mouse
             EventSystem.current.SetSelectedGameObject(null);
         }
+    }
+
+    IEnumerator ResetMenuState()
+    {
+        yield return null; // wait 1 frame for scene + EventSystem
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        currentHoverTarget = null;
+        lastSelected = null;
+
+        if (EventSystem.current != null)
+            EventSystem.current.SetSelectedGameObject(null);
+
+        HandleInputModeSwitch(SimpleInputMode.UsingController);
     }
 
     // ---------------- HOVER (MOUSE) ----------------
