@@ -19,6 +19,7 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
     public Material consoleLightNoPowerMaterial;
     public AudioClip industrialAmbience;
     public AudioClip shutdownSound;
+    public AudioClip postShutdownMusic;
     public AudioSource sfxSource;
     public Canvas promptCanvas;
 
@@ -227,6 +228,8 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
             Debug.LogWarning("AudioManager instance not found!");
         }
 
+        StartCoroutine(SwitchMusicAfterDelay());
+
         // If current scene not Chapter3, enable sprinting
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "Chapter3")
         {
@@ -248,5 +251,15 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
         float distortionT = Mathf.InverseLerp(distortionStart, 1f, t);
         distortionT = Mathf.Clamp01(distortionT);
         return Mathf.Pow(distortionT, 3f);
+    }
+
+    IEnumerator SwitchMusicAfterDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        if (MusicManager.Instance != null && postShutdownMusic != null)
+        {
+            MusicManager.Instance.PlayMusic(postShutdownMusic, false);
+        }
     }
 }
