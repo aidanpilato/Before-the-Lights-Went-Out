@@ -14,6 +14,7 @@ public class MasterShutdownManager : MonoBehaviour, IShutdownHandler
     public Material consoleLightNoPowerMaterial;
     public GameObject endPanel;
     public Volume postProcess;
+    public PauseMenu pauseManager;
 
     [Header("Shutdown Settings")]
     public float fovReduction = 20f;
@@ -103,6 +104,8 @@ public class MasterShutdownManager : MonoBehaviour, IShutdownHandler
 
     public void CompleteShutdown()
     {
+        pauseManager.canPause = false;
+        
         StopAllCoroutines();
 
         // HARD SNAP (important for your design language)
