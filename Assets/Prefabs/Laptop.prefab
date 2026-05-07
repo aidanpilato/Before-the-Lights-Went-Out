@@ -92,7 +92,7 @@ AudioSource:
   m_GameObject: {fileID: 1093524187515972570}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6123845757328348620, guid: 119ec688b63d18949a02bc9f4a6f9231, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: b3c68b64f2731584ca2e8ba38dccc500, type: 3}
   m_PlayOnAwake: 0
@@ -228,6 +228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dccf03e88e2644247b6f06b9544d46a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioLogInteraction
+  clip1: {fileID: 0}
+  clip2: {fileID: 0}
   secondaryInteractAction: {fileID: 0}
   promptUI: {fileID: 2234818495065446305}
   canvasGroup: {fileID: 4572341533991281440}

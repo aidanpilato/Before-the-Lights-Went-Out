@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 [RequireComponent(typeof(AudioSource))]
 public class AudioLogInteraction : MonoBehaviour
@@ -19,9 +20,9 @@ public class AudioLogInteraction : MonoBehaviour
     private bool playerInRange = false;
     private bool isPlaying = false;
     private float targetAlpha = 0f;
-    private int currentClipIndex = 0;
 
     private AudioSource audioSource;
+    private Coroutine playbackRoutine;
 
     void Awake()
     {
@@ -36,44 +37,31 @@ public class AudioLogInteraction : MonoBehaviour
     void OnDisable()
     {
         secondaryInteractAction.action.Disable();
+
+        if (audioSource != null)
+            audioSource.Stop();
+
+        if (playbackRoutine != null)
+            StopCoroutine(playbackRoutine);
+
+        isPlaying = false;
     }
 
     void Update()
     {
         // Smooth fade
-        canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, targetAlpha, Time.deltaTime * fadeSpeed);
+        canvasGroup.alpha = Mathf.Lerp(
+            canvasGroup.alpha,
+            targetAlpha,
+            Time.deltaTime * fadeSpeed
+        );
 
-        // Optional: snap when very close
+        // Snap when very close
         if (Mathf.Abs(canvasGroup.alpha - targetAlpha) < 0.01f)
             canvasGroup.alpha = targetAlpha;
 
-        if (!playerInRange)
+        if (!playerInRange || isPlaying)
             return;
-
-        if (isPlaying)
-        {
-            if (!audioSource.isPlaying)
-            {
-                // First clip finished
-                if (currentClipIndex == 0)
-                {
-                    currentClipIndex = 1;
-
-                    audioSource.clip = clip2;
-                    audioSource.Play();
-                }
-                // Second clip finished
-                else
-                {
-                    isPlaying = false;
-                    currentClipIndex = 0;
-
-                    targetAlpha = 1f;
-                }
-            }
-
-            return;
-        }
 
         // Interaction
         if (secondaryInteractAction.action.WasPressedThisFrame())
@@ -90,13 +78,42 @@ public class AudioLogInteraction : MonoBehaviour
             return;
         }
 
+        if (playbackRoutine != null)
+            StopCoroutine(playbackRoutine);
+
+        playbackRoutine = StartCoroutine(PlaySequence());
+    }
+
+    IEnumerator PlaySequence()
+    {
         isPlaying = true;
         targetAlpha = 0f;
 
-        currentClipIndex = 0;
-
+        // Play first clip
         audioSource.clip = clip1;
         audioSource.Play();
+
+        yield return WaitForClipToFinish();
+
+        // Play second clip
+        audioSource.clip = clip2;
+        audioSource.Play();
+
+        yield return WaitForClipToFinish();
+
+        // Finished sequence
+        isPlaying = false;
+
+        if (playerInRange)
+            targetAlpha = 1f;
+    }
+
+    IEnumerator WaitForClipToFinish()
+    {
+        while (audioSource.isPlaying || AudioListener.pause)
+        {
+            yield return null;
+        }
     }
 
     void OnTriggerEnter(Collider other)
