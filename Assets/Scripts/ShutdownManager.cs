@@ -17,10 +17,14 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
     public Animator playerAnimator;
     public GameObject[] consoleLights;
     public Material consoleLightNoPowerMaterial;
+
+    [Header("Audio")]
     public AudioClip industrialAmbience;
     public AudioClip shutdownSound;
     public AudioClip postShutdownMusic;
+    public float shutdownMusicVolume = 1f;
     public AudioSource sfxSource;
+
     public Canvas promptCanvas;
 
     [Header("Shutdown Settings")]
@@ -259,7 +263,7 @@ public class ShutdownManager : MonoBehaviour, IShutdownHandler
 
         if (MusicManager.Instance != null && postShutdownMusic != null)
         {
-            MusicManager.Instance.PlayMusic(postShutdownMusic, false);
+            MusicManager.Instance.PlayMusic(postShutdownMusic, false, shutdownMusicVolume);
         }
     }
 }

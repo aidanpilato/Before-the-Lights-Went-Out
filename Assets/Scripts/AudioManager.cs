@@ -42,17 +42,23 @@ public class AudioManager : MonoBehaviour
         ambienceSource.Stop();
     }
 
-    public void FadeToAmbience(AudioClip newClip, float fadeTime = -1f)
+    public void FadeToAmbience(AudioClip newClip, float fadeTime = -1f, float targetVolume = 1f)
     {
         if (fadeTime <= 0) fadeTime = defaultFadeTime;
-        currentFade = StartCoroutine(FadeAmbienceRoutine(newClip, fadeTime));
+
+        if (currentFade != null)
+            StopCoroutine(currentFade);
+
+        currentFade = StartCoroutine(
+            FadeAmbienceRoutine(newClip, fadeTime, targetVolume)
+        );
     }
 
-    private IEnumerator FadeAmbienceRoutine(AudioClip newClip, float fadeTime)
+    private IEnumerator FadeAmbienceRoutine(AudioClip newClip, float fadeTime, float targetVolume)
     {
-        // Fade out
         float startVolume = ambienceSource.volume;
 
+        // Fade out
         while (ambienceSource.volume > 0)
         {
             ambienceSource.volume -= startVolume * Time.deltaTime / fadeTime;
@@ -63,14 +69,16 @@ public class AudioManager : MonoBehaviour
         ambienceSource.clip = newClip;
         ambienceSource.Play();
 
+        ambienceSource.volume = 0f;
+
         // Fade in
-        while (ambienceSource.volume < startVolume)
+        while (ambienceSource.volume < targetVolume)
         {
-            ambienceSource.volume += startVolume * Time.deltaTime / fadeTime;
+            ambienceSource.volume += targetVolume * Time.deltaTime / fadeTime;
             yield return null;
         }
 
-        ambienceSource.volume = startVolume;
+        ambienceSource.volume = targetVolume;
     }
 
     public void CutToAmbience(AudioClip newClip, float volume = 1f)

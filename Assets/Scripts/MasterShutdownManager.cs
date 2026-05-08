@@ -135,6 +135,11 @@ public class MasterShutdownManager : MonoBehaviour, IShutdownHandler
             Debug.LogWarning("SFX Source or Shutdown Sound not set!");
         }
 
+        if (MusicManager.Instance != null)
+        {
+            MusicManager.Instance.StopMusic();
+        }
+
         playerController.movementLocked = true;
 
         isCharging = false;
